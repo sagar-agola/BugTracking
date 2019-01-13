@@ -50,6 +50,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseEntity.cs" />
+    <Compile Include="Bug.cs">
+      <DependentUpon>BugTrackingEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="BugTrackingEntity.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -65,10 +68,34 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BugTrackingEntity.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Bug_priorities.cs">
+      <DependentUpon>BugTrackingEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Bug_Status.cs">
       <DependentUpon>BugTrackingEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Project.cs">
+      <DependentUpon>BugTrackingEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Project_Developers.cs">
+      <DependentUpon>BugTrackingEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Project_Status.cs">
+      <DependentUpon>BugTrackingEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Project_Technologies.cs">
+      <DependentUpon>BugTrackingEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>BugTrackingEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>BugTrackingEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User_Roles.cs">
+      <DependentUpon>BugTrackingEntity.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="BugTrackingEntity.edmx">

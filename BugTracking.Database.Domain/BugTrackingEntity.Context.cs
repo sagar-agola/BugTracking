@@ -26,5 +26,14 @@ namespace BugTracking.Database.Domain
         }
     
         public virtual DbSet<Bug_Status> Bug_Status { get; set; }
+        public virtual DbSet<Bug_priorities> Bug_priorities { get; set; }
+        public virtual DbSet<Bug> Bugs { get; set; }
+        public virtual DbSet<Project_Developers> Project_Developers { get; set; }
+        public virtual DbSet<Project_Status> Project_Status { get; set; }
+        public virtual DbSet<Project_Technologies> Project_Technologies { get; set; }
+        public virtual DbSet<Project> Projects { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<User_Roles> User_Roles { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     }
 }

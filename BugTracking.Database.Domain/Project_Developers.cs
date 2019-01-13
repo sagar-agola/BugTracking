@@ -12,18 +12,13 @@ namespace BugTracking.Database.Domain
     using System;
     using System.Collections.Generic;
     
-    public partial class Bug_Status : BaseEntity
+    public partial class Project_Developers : BaseEntity
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Bug_Status()
-        {
-            this.Bugs = new HashSet<Bug>();
-        }
-    
         public int Id { get; set; }
-        public string BugStatus { get; set; }
+        public int ProjectId { get; set; }
+        public int UserId { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Bug> Bugs { get; set; }
+        public virtual Project Project { get; set; }
+        public virtual User User { get; set; }
     }
 }

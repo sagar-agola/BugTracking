@@ -12,10 +12,10 @@ namespace BugTracking.Database.Domain
     using System;
     using System.Collections.Generic;
     
-    public partial class Bug_Status : BaseEntity
+    public partial class Bug_priorities : BaseEntity
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Bug_Status()
+        public Bug_priorities()
         {
             this.Bugs = new HashSet<Bug>();
         }
