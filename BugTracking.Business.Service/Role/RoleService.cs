@@ -32,7 +32,5 @@ namespace BugTracking.Business.Service.Role
                 return Mapper.Map<List<User_Roles>, List<User_RolesViewModel>>(rolesList);
             }
         }
-
-        public 
     }
 }

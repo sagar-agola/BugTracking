@@ -42,7 +42,9 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\General\IBaseRepository.cs" />
+    <Compile Include="Repositories\Role\IRoleRepository.cs" />
     <Compile Include="Repositories\Status\IStatusRepository.cs" />
+    <Compile Include="Services\Role\IRoleService.cs" />
     <Compile Include="Services\Status\IStatusService.cs" />
   </ItemGroup>
   <ItemGroup>
