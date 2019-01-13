@@ -49,15 +49,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseEntity.cs" />
     <Compile Include="BugTrackingEntity.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>BugTrackingEntity.Context.tt</DependentUpon>
     </Compile>
+    <Compile Include="BugTrackingEntity.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BugTrackingEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="BugTrackingEntity.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>BugTrackingEntity.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Bug_Status.cs">
+      <DependentUpon>BugTrackingEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -78,6 +87,12 @@
     <Content Include="BugTrackingEntity.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>BugTrackingEntity.Context.cs</LastGenOutput>
+      <DependentUpon>BugTrackingEntity.edmx</DependentUpon>
+    </Content>
+    <Content Include="BugTrackingEntity.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BugTrackingEntity.edmx</DependentUpon>
+      <LastGenOutput>BugTrackingEntity.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

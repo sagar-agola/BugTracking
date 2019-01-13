@@ -41,6 +41,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\General\IBaseRepository.cs" />
+    <Compile Include="Repositories\Status\IStatusRepository.cs" />
+    <Compile Include="Services\Status\IStatusService.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BugTracking.Business\BugTracking.Business.csproj">
+      <Project>{2e01900f-d22d-4a09-a4e6-82b429d57d59}</Project>
+      <Name>BugTracking.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BugTracking.Database.Domain\BugTracking.Database.Domain.csproj">
+      <Project>{562f4483-587b-4a83-8eee-227aeb60d942}</Project>
+      <Name>BugTracking.Database.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

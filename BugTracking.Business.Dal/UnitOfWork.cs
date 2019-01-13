@@ -1,20 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using BugTracking.Database.Domain;
+using BugTracking.Business.Contracts.Repositories.Status;
+using BugTracking.Business.Dal.Repositories.Status;
 
 namespace BugTracking.Business.Dal
 {
     public class UnitOfWork : IDisposable
     {
-        private readonly BugTrackingEntities context = new BugTrackingEntities();
+        #region Properties
+        private readonly BugTrackingEntities context;
+        #endregion
 
+        #region Constructor
         public UnitOfWork()
         {
+            context = new BugTrackingEntities();
 
+            StatusRepository = new StatusRepository(context);
         }
+        #endregion
+
+        public IStatusRepository StatusRepository { get; }
 
         private bool disposed;
 

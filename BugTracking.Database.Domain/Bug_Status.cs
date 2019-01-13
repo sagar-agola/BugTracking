@@ -12,7 +12,7 @@ namespace BugTracking.Database.Domain
     using System;
     using System.Collections.Generic;
     
-    public partial class Bug_Status
+    public partial class Bug_Status : BaseEntity
     {
         public int Id { get; set; }
         public string BugStatus { get; set; }
