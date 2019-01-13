@@ -2,14 +2,14 @@
 using BugTracking.Database.Domain;
 using BugTracking.Business.Contracts.Repositories.Status;
 using BugTracking.Business.Dal.Repositories.Status;
+using BugTracking.Business.Contracts.Repositories.Role;
+using BugTracking.Business.Dal.Repositories.Role;
 
 namespace BugTracking.Business.Dal
 {
     public class UnitOfWork : IDisposable
     {
-        #region Properties
         private readonly BugTrackingEntities context;
-        #endregion
 
         #region Constructor
         public UnitOfWork()
@@ -17,10 +17,14 @@ namespace BugTracking.Business.Dal
             context = new BugTrackingEntities();
 
             StatusRepository = new StatusRepository(context);
+            RoleRepository = new RoleRepository(context);
         }
         #endregion
 
+        #region Properties
         public IStatusRepository StatusRepository { get; }
+        public IRoleRepository RoleRepository { get; }
+        #endregion
 
         private bool disposed;
 

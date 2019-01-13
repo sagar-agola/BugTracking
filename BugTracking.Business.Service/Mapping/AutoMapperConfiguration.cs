@@ -15,6 +15,9 @@ namespace BugTracking.Business.Service.Mapping
         {
             Mapper.CreateMap<Bug_Status, Bug_StatusViewModel>();
             Mapper.CreateMap<Bug_StatusViewModel, Bug_Status>();
+
+            Mapper.CreateMap<User_Roles, User_RolesViewModel>();
+            Mapper.CreateMap<User_RolesViewModel, User_Roles>();
         }
     }
 }
