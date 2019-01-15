@@ -22,7 +22,7 @@ namespace BugTracking.Api.Controllers
 
         [Route("create")]
         [HttpPost]
-        public object CreateRole([FromBody] User_RolesViewModel model)
+        public object CreateRole(User_RolesViewModel model)
         {
             ResponseDetails responseDetails = new ResponseDetails();
 
@@ -60,7 +60,7 @@ namespace BugTracking.Api.Controllers
 
         [Route("edit")]
         [HttpPut]
-        public object UpdateRole([FromBody] User_RolesViewModel model)
+        public object UpdateRole(User_RolesViewModel model)
         {
             ResponseDetails responseDetails = new ResponseDetails();
 
@@ -77,9 +77,9 @@ namespace BugTracking.Api.Controllers
             return responseDetails;
         }
 
-        [Route("delete")]
+        [Route("delete/{id}")]
         [HttpDelete]
-        public object DeleteRole([FromUri] int id)
+        public object DeleteRole(int id)
         {
             ResponseDetails responseDetails = new ResponseDetails();
 

@@ -4,6 +4,8 @@ using BugTracking.Business.Contracts.Repositories.Status;
 using BugTracking.Business.Dal.Repositories.Status;
 using BugTracking.Business.Contracts.Repositories.Role;
 using BugTracking.Business.Dal.Repositories.Role;
+using BugTracking.Business.Dal.Repositories.Users;
+using BugTracking.Business.Contracts.Repositories.Users;
 
 namespace BugTracking.Business.Dal
 {
@@ -18,12 +20,14 @@ namespace BugTracking.Business.Dal
 
             StatusRepository = new StatusRepository(context);
             RoleRepository = new RoleRepository(context);
+            UserRepository = new UserRepository(context);
         }
         #endregion
 
         #region Properties
         public IStatusRepository StatusRepository { get; }
         public IRoleRepository RoleRepository { get; }
+        public IUserRepository UserRepository { get; }
         #endregion
 
         private bool disposed;

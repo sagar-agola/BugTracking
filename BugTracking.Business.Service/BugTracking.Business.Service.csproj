@@ -50,6 +50,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Role\RoleService.cs" />
     <Compile Include="Status\StatusService.cs" />
+    <Compile Include="Users\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BugTracking.Business.Contracts\BugTracking.Business.Contracts.csproj">

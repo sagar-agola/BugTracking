@@ -1,11 +1,6 @@
 ﻿using AutoMapper;
 using BugTracking.Business.ViewModels;
 using BugTracking.Database.Domain;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BugTracking.Business.Service.Mapping
 {
@@ -18,6 +13,9 @@ namespace BugTracking.Business.Service.Mapping
 
             Mapper.CreateMap<User_Roles, User_RolesViewModel>();
             Mapper.CreateMap<User_RolesViewModel, User_Roles>();
+
+            Mapper.CreateMap<User, UserViewModel>();
+            Mapper.CreateMap<UserViewModel, User>();
         }
     }
 }

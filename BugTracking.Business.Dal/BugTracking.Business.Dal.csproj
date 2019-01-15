@@ -51,6 +51,7 @@
     <Compile Include="Repositories\General\BaseRepository.cs" />
     <Compile Include="Repositories\Role\RoleRepository.cs" />
     <Compile Include="Repositories\Status\StatusRepository.cs" />
+    <Compile Include="Repositories\Users\UserRepository.cs" />
     <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -4,7 +4,7 @@ using BugTracking.Database.Domain;
 
 namespace BugTracking.Business.Dal.Repositories.Role
 {
-    class RoleRepository : BaseRepository<User_Roles>, IRoleRepository
+    public class RoleRepository : BaseRepository<User_Roles>, IRoleRepository
     {
         public RoleRepository(BugTrackingEntities context) : base(context)
         {
