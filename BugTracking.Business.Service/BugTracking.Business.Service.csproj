@@ -49,7 +49,7 @@
     <Compile Include="Mapping\AutoMapperConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Role\RoleService.cs" />
-    <Compile Include="Status\StatusService.cs" />
+    <Compile Include="BugStatus\BugStatusService.cs" />
     <Compile Include="Users\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
