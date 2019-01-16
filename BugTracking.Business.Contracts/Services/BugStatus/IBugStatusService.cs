@@ -1,8 +1,8 @@
 ﻿using BugTracking.Business.ViewModels;
 
-namespace BugTracking.Business.Contracts.Services.Status
+namespace BugTracking.Business.Contracts.Services.BugStatus
 {
-    public interface IStatusService
+    public interface IBugStatusService
     {
         void Create(Bug_StatusViewModel model);
     }

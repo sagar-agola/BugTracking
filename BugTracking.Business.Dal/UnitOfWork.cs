@@ -1,11 +1,11 @@
 ﻿using System;
 using BugTracking.Database.Domain;
-using BugTracking.Business.Contracts.Repositories.Status;
-using BugTracking.Business.Dal.Repositories.Status;
+using BugTracking.Business.Contracts.Repositories.BugStatus;
+using BugTracking.Business.Dal.Repositories.BugStatus;
 using BugTracking.Business.Contracts.Repositories.Role;
 using BugTracking.Business.Dal.Repositories.Role;
-using BugTracking.Business.Dal.Repositories.Users;
 using BugTracking.Business.Contracts.Repositories.Users;
+using BugTracking.Business.Dal.Repositories.Users;
 
 namespace BugTracking.Business.Dal
 {
@@ -18,14 +18,14 @@ namespace BugTracking.Business.Dal
         {
             context = new BugTrackingEntities();
 
-            StatusRepository = new StatusRepository(context);
+            BugStatusRepository = new BugStatusRepository(context);
             RoleRepository = new RoleRepository(context);
             UserRepository = new UserRepository(context);
         }
         #endregion
 
         #region Properties
-        public IStatusRepository StatusRepository { get; }
+        public IBugStatusRepository BugStatusRepository { get; }
         public IRoleRepository RoleRepository { get; }
         public IUserRepository UserRepository { get; }
         #endregion

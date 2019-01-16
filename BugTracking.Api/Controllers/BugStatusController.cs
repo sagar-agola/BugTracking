@@ -1,25 +1,25 @@
-﻿using BugTracking.Business.Contracts.Services.Status;
+﻿using BugTracking.Business.Contracts.Services.BugStatus;
 using BugTracking.Business.Enums;
 using BugTracking.Business.Helpers;
 using BugTracking.Business.Models;
-using BugTracking.Business.Service.Status;
+using BugTracking.Business.Service.BugStatus;
 using BugTracking.Business.ViewModels;
 using System;
 using System.Web.Http;
 
 namespace BugTracking.Api.Controllers
 {
-    [RoutePrefix("api/status")]
-    public class StatusController : ApiController
+    [RoutePrefix("api/bug/status")]
+    public class BugStatusController : ApiController
     {
         #region Properties
-        private readonly IStatusService statusService;
+        private readonly IBugStatusService statusService;
         #endregion
 
         #region Constructor
-        public StatusController()
+        public BugStatusController()
         {
-            statusService = new StatusService();
+            statusService = new BugStatusService();
         }
         #endregion
 

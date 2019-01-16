@@ -2,9 +2,9 @@
 
 namespace BugTracking.Business.ViewModels
 {
-    public class Bug_StatusViewModel
+    public class Bug_PrioritiesViewModel
     {
-        public Bug_StatusViewModel()
+        public Bug_PrioritiesViewModel()
         {
             BugViewModels = new HashSet<BugViewModel>();
         }
