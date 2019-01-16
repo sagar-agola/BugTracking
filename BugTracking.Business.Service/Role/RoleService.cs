@@ -26,9 +26,16 @@ namespace BugTracking.Business.Service.Role
         {
             using(unitOfWork = new UnitOfWork())
             {
-                List<User_Roles> rolesList = unitOfWork.RoleRepository.GetAll().ToList();
+                List<User_Roles> rolesList = unitOfWork.RoleRepository.GetAllRoles();
+                List<User_RolesViewModel> roleListmapping = new List<User_RolesViewModel>();
 
-                return Mapper.Map<List<User_Roles>, List<User_RolesViewModel>>(rolesList);
+                for (int i = 0; i < rolesList.Count; i++)
+                {
+                    User_RolesViewModel model = Mapper.Map<User_Roles, User_RolesViewModel>(rolesList[i]);
+                    model.UserViewModels = Mapper.Map<ICollection<User>, ICollection<UserViewModel>>(rolesList[i].Users);
+                    roleListmapping.Add(model);
+                }
+                return roleListmapping;
             }
         }
 
