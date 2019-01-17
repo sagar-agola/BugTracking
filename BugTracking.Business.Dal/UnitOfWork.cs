@@ -6,6 +6,8 @@ using BugTracking.Business.Contracts.Repositories.Role;
 using BugTracking.Business.Dal.Repositories.Role;
 using BugTracking.Business.Contracts.Repositories.Users;
 using BugTracking.Business.Dal.Repositories.Users;
+using BugTracking.Business.Contracts.Repositories.BugPriority;
+using BugTracking.Business.Dal.Repositories.BugPriority;
 
 namespace BugTracking.Business.Dal
 {
@@ -18,16 +20,18 @@ namespace BugTracking.Business.Dal
         {
             context = new BugTrackingEntities();
 
-            BugStatusRepository = new BugStatusRepository(context);
             RoleRepository = new RoleRepository(context);
             UserRepository = new UserRepository(context);
+            BugStatusRepository = new BugStatusRepository(context);
+            BugPriorityRepository = new BugPriorityRepository(context);
         }
         #endregion
 
         #region Properties
-        public IBugStatusRepository BugStatusRepository { get; }
         public IRoleRepository RoleRepository { get; }
         public IUserRepository UserRepository { get; }
+        public IBugStatusRepository BugStatusRepository { get; }
+        public IBugPriorityRepository BugPriorityRepository { get; }
         #endregion
 
         private bool disposed;
