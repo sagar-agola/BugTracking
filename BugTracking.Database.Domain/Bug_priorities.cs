@@ -21,7 +21,7 @@ namespace BugTracking.Database.Domain
         }
     
         public int Id { get; set; }
-        public string BugStatus { get; set; }
+        public string BugPriority { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Bug> Bugs { get; set; }

@@ -10,7 +10,7 @@ namespace BugTracking.Business.ViewModels
         }
 
         public int Id { get; set; }
-        public string BugStatus { get; set; }
+        public string BugPriority { get; set; }
 
         public virtual ICollection<BugViewModel> BugViewModels { get; set; }
     }

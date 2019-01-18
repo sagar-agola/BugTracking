@@ -1,6 +1,9 @@
-﻿using BugTracking.Business.Contracts.Repositories.BugPriority;
+﻿using System.Collections.Generic;
+using BugTracking.Business.Contracts.Repositories.BugPriority;
 using BugTracking.Business.Dal.Repositories.General;
 using BugTracking.Database.Domain;
+using System.Data.Entity;
+using System.Linq;
 
 namespace BugTracking.Business.Dal.Repositories.BugPriority
 {
@@ -9,6 +12,11 @@ namespace BugTracking.Business.Dal.Repositories.BugPriority
         public BugPriorityRepository(BugTrackingEntities context) : base(context)
         {
             Context = context;
+        }
+
+        List<Bug_priorities> IBugPriorityRepository.GetAll()
+        {
+            return Context.Bug_priorities.Include(x => x.Bugs).ToList();
         }
     }
 }

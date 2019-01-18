@@ -25,8 +25,8 @@ namespace BugTracking.Database.Domain
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Bug_Status> Bug_Status { get; set; }
         public virtual DbSet<Bug_priorities> Bug_priorities { get; set; }
+        public virtual DbSet<Bug_Status> Bug_Status { get; set; }
         public virtual DbSet<Bug> Bugs { get; set; }
         public virtual DbSet<Project_Developers> Project_Developers { get; set; }
         public virtual DbSet<Project_Status> Project_Status { get; set; }

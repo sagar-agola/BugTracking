@@ -36,8 +36,15 @@ namespace BugTracking.Business.Service.BugPriority
         {
             using (unitOfWork = new UnitOfWork())
             {
-                List<Bug_priorities> bugPriorityList = unitOfWork.BugPriorityRepository.GetAll().ToList();
-                return Mapper.Map<List<Bug_priorities>, List<Bug_PrioritiesViewModel>>(bugPriorityList);
+                List<Bug_priorities> bugPriorityList = unitOfWork.BugPriorityRepository.GetAll();
+                List<Bug_PrioritiesViewModel> modelMapping = Mapper.Map<List<Bug_priorities>, List<Bug_PrioritiesViewModel>>(bugPriorityList);
+                
+                for(int i = 0; i < modelMapping.Count; i++)
+                {
+                    modelMapping[i].BugViewModels = Mapper.Map<ICollection<Bug>, ICollection<BugViewModel>>(bugPriorityList[i].Bugs);
+                }
+
+                return modelMapping;
             }
         }
 
@@ -47,6 +54,7 @@ namespace BugTracking.Business.Service.BugPriority
             {
                 Bug_priorities modelMapping = Mapper.Map<Bug_PrioritiesViewModel, Bug_priorities>(model);
                 unitOfWork.BugPriorityRepository.Update(modelMapping);
+                unitOfWork.BugPriorityRepository.Save();
             }
         }
     }
