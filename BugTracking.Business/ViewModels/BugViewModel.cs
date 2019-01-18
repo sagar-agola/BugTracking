@@ -13,8 +13,8 @@
 
         public virtual Bug_PrioritiesViewModel Bug_PrioritiesViewModel { get; set; }
         public virtual Bug_StatusViewModel Bug_StatusViewModel { get; set; }
-        public virtual ProjectViewModel Project { get; set; }
-        public virtual UserViewModel User { get; set; }
+        public virtual ProjectViewModel ProjectViewModel { get; set; }
+        public virtual UserViewModel UserViewModel { get; set; }
 
     }
 }

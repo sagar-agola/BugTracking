@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BugPriority\BugPriorityRepository.cs" />
+    <Compile Include="Repositories\Bugs\BugRepository.cs" />
     <Compile Include="Repositories\General\BaseRepository.cs" />
     <Compile Include="Repositories\Role\RoleRepository.cs" />
     <Compile Include="Repositories\BugStatus\BugStatusRepository.cs" />
