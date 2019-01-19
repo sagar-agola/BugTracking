@@ -44,11 +44,13 @@
     <Compile Include="Repositories\BugPriority\IBugPriorityRepository.cs" />
     <Compile Include="Repositories\Bugs\IBugRepository.cs" />
     <Compile Include="Repositories\General\IBaseRepository.cs" />
+    <Compile Include="Repositories\ProjectTechnology\IProjectTechnologyRepository.cs" />
     <Compile Include="Repositories\Role\IRoleRepository.cs" />
     <Compile Include="Repositories\BugStatus\IBugStatusRepository.cs" />
     <Compile Include="Repositories\Users\IUserRepository.cs" />
     <Compile Include="Services\BugPriority\IBugPriorityService.cs" />
     <Compile Include="Services\Bugs\IBugService.cs" />
+    <Compile Include="Services\ProjectTechnology\IProjectTechnologyService.cs" />
     <Compile Include="Services\Role\IRoleService.cs" />
     <Compile Include="Services\BugStatus\IBugStatusService.cs" />
     <Compile Include="Services\Users\IUserService.cs" />

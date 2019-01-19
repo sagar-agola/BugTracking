@@ -49,6 +49,7 @@
     <Compile Include="BugPriority\BugPriorityService.cs" />
     <Compile Include="Bugs\BugService.cs" />
     <Compile Include="Mapping\AutoMapperConfiguration.cs" />
+    <Compile Include="ProjectTechnology\ProjectTechnologyService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Role\RoleService.cs" />
     <Compile Include="BugStatus\BugStatusService.cs" />

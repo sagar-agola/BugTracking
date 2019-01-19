@@ -26,8 +26,8 @@ namespace BugTracking.Business.Service.Mapping
             Mapper.CreateMap<Project_Status, Project_StatusViewModel>();
             Mapper.CreateMap<Project_StatusViewModel, Project_Status>();
 
-            Mapper.CreateMap<Project_Status, Project_StatusViewModel>();
-            Mapper.CreateMap<Project_StatusViewModel, Project_Status>();
+            Mapper.CreateMap<Project_Technologies, Project_TechnologiesViewModel>();
+            Mapper.CreateMap<Project_TechnologiesViewModel, Project_Technologies>();
 
             Mapper.CreateMap<Project, ProjectViewModel>();
             Mapper.CreateMap<ProjectViewModel, Project>();
