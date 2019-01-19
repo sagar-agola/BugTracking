@@ -23,6 +23,12 @@ namespace BugTracking.Business.Service.Mapping
             Mapper.CreateMap<Bug_PrioritiesViewModel, Bug_priorities>();
             Mapper.CreateMap<Bug_priorities, Bug_PrioritiesViewModel>();
 
+            Mapper.CreateMap<Project_Status, Project_StatusViewModel>();
+            Mapper.CreateMap<Project_StatusViewModel, Project_Status>();
+
+            Mapper.CreateMap<Project_Status, Project_StatusViewModel>();
+            Mapper.CreateMap<Project_StatusViewModel, Project_Status>();
+
             Mapper.CreateMap<Project, ProjectViewModel>();
             Mapper.CreateMap<ProjectViewModel, Project>();
         }
