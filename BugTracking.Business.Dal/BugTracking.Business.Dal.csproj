@@ -51,6 +51,7 @@
     <Compile Include="Repositories\BugPriority\BugPriorityRepository.cs" />
     <Compile Include="Repositories\Bugs\BugRepository.cs" />
     <Compile Include="Repositories\General\BaseRepository.cs" />
+    <Compile Include="Repositories\ProjectStatus\ProjectStatusRepository.cs" />
     <Compile Include="Repositories\ProjectTechnology\ProjectTechnologyRepository.cs" />
     <Compile Include="Repositories\Role\RoleRepository.cs" />
     <Compile Include="Repositories\BugStatus\BugStatusRepository.cs" />
