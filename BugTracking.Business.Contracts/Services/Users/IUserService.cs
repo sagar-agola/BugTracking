@@ -14,5 +14,7 @@ namespace BugTracking.Business.Contracts.Services.Users
         void Edit(UserViewModel model);
 
         void Delete(int id);
+
+        int EmployeeCount();
     }
 }

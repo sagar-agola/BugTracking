@@ -9,5 +9,7 @@ namespace BugTracking.Business.Contracts.Repositories.Bugs
         new List<Bug> GetAll();
 
         Bug GetById(int id);
+
+        int OpenBugCount();
     }
 }

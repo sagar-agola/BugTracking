@@ -9,5 +9,7 @@ namespace BugTracking.Business.Contracts.Repositories.Projects
         new List<Project> GetAll();
 
         Project GetById(int id);
+
+        int ActiveProjectCount();
     }
 }

@@ -14,6 +14,13 @@ namespace BugTracking.Business.Dal.Repositories.Users
             Context = context;
         }
 
+        public int EmployeeCount()
+        {
+            return Context.Users
+                .Where(user => user.IsActive)
+                .Count();
+        }
+
         public User GetById(int id)
         {
             return Context.Users

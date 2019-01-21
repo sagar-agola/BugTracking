@@ -56,6 +56,14 @@ namespace BugTracking.Business.Service.Bugs
             }
         }
 
+        public int OpenBugCount()
+        {
+            using (unitOfWork = new UnitOfWork())
+            {
+                return unitOfWork.ProjectRepository.ActiveProjectCount();
+            }
+        }
+
         public void Update(BugViewModel model)
         {
             using (unitOfWork = new UnitOfWork())

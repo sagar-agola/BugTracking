@@ -117,5 +117,24 @@ namespace BugTracking.Api.Controllers
 
             return responseDetails;
         }
+
+        [Route("project-count")]
+        [HttpGet]
+        public object GetActiveProjectCount()
+        {
+            ResponseDetails responseDetails = new ResponseDetails();
+
+            try
+            {
+                int count = projectService.ActiveProjectCount();
+                responseDetails = Helper.SetResponseDetails("", true, count, MessageType.Success);
+            }
+            catch(Exception ex)
+            {
+                responseDetails = Helper.SetResponseDetails("Exception encountered : " + ex.Message, false, ex, MessageType.Error);
+            }
+
+            return responseDetails;
+        }
     }
 }

@@ -115,5 +115,24 @@ namespace BugTracking.Api.Controllers
 
             return responseDetails;
         }
+
+        [Route("bug-count")]
+        [HttpGet]
+        public object GetOpenBugCount()
+        {
+            ResponseDetails responseDetails = new ResponseDetails();
+
+            try
+            {
+                int count = bugService.OpenBugCount();
+                responseDetails = Helper.SetResponseDetails("", true, count, MessageType.Success);
+            }
+            catch(Exception ex)
+            {
+                responseDetails = Helper.SetResponseDetails("Exception encountered : " + ex.Message, false, ex, MessageType.Error);
+            }
+
+            return responseDetails;
+        }
     }
 }

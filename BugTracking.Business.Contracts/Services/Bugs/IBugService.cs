@@ -14,5 +14,7 @@ namespace BugTracking.Business.Contracts.Services.Bugs
         void Update(BugViewModel model);
 
         void Delete(int id);
+
+        int OpenBugCount();
     }
 }

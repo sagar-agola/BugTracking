@@ -11,6 +11,14 @@ namespace BugTracking.Business.Service.Projects
     {
         private UnitOfWork unitOfWork;
 
+        public int ActiveProjectCount()
+        {
+            using (unitOfWork = new UnitOfWork())
+            {
+                return unitOfWork.ProjectRepository.ActiveProjectCount();
+            }
+        }
+
         public void Create(ProjectViewModel model)
         {
             using (unitOfWork = new UnitOfWork())

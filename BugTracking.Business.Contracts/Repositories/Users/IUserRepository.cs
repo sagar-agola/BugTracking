@@ -9,5 +9,7 @@ namespace BugTracking.Business.Contracts.Repositories.Users
         User GetById(int id);
 
         new List<User> GetAll();
+
+        int EmployeeCount();
     }
 }

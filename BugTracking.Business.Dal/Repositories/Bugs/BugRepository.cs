@@ -1,12 +1,9 @@
 ﻿using BugTracking.Business.Contracts.Repositories.Bugs;
 using BugTracking.Business.Dal.Repositories.General;
 using BugTracking.Database.Domain;
-using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BugTracking.Business.Dal.Repositories.Bugs
 {
@@ -26,6 +23,13 @@ namespace BugTracking.Business.Dal.Repositories.Bugs
                 .Include(bug => bug.Bug_priorities)
                 .Include(bug => bug.Bug_Status)
                 .FirstOrDefault();
+        }
+
+        public int OpenBugCount()
+        {
+            return Context.Bugs
+                .Where(bug => bug.Bug_Status.BugStatus != "Closed")
+                .Count();
         }
 
         List<Bug> IBugRepository.GetAll()

@@ -14,5 +14,7 @@ namespace BugTracking.Business.Contracts.Services.Projects
         void Update(ProjectViewModel model);
 
         void Delete(int id);
+
+        int ActiveProjectCount();
     }
 }

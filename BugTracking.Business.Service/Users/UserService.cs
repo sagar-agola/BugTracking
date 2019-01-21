@@ -41,6 +41,14 @@ namespace BugTracking.Business.Service.Users
             }
         }
 
+        public int EmployeeCount()
+        {
+            using (unitOfWork = new UnitOfWork())
+            {
+                return unitOfWork.UserRepository.EmployeeCount();
+            }
+        }
+
         public List<UserViewModel> GetAll()
         {
             using(unitOfWork = new UnitOfWork())

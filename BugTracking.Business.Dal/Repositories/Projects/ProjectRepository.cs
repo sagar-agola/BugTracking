@@ -1,12 +1,9 @@
 ﻿using BugTracking.Business.Contracts.Repositories.Projects;
 using BugTracking.Business.Dal.Repositories.General;
 using BugTracking.Database.Domain;
-using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BugTracking.Business.Dal.Repositories.Projects
 {
@@ -15,6 +12,13 @@ namespace BugTracking.Business.Dal.Repositories.Projects
         public ProjectRepository(BugTrackingEntities context) : base(context)
         {
             Context = context;
+        }
+
+        public int ActiveProjectCount()
+        {
+            return Context.Projects
+                .Where(project => project.IsActive)
+                .Count();
         }
 
         public Project GetById(int id)
