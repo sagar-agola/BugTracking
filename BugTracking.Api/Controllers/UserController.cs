@@ -114,24 +114,5 @@ namespace BugTracking.Api.Controllers
 
             return responseDetails;
         }
-
-        [Route("employee-count")]
-        [HttpGet]
-        public object GetEmployeeCount()
-        {
-            ResponseDetails responseDetails = new ResponseDetails();
-
-            try
-            {
-                int count = userService.EmployeeCount();
-                responseDetails = Helper.SetResponseDetails("", true, count, MessageType.Success);
-            }
-            catch(Exception ex)
-            {
-                responseDetails = Helper.SetResponseDetails("Exception encountered : " + ex.Message, false, ex, MessageType.Error);
-            }
-
-            return responseDetails;
-        }
     }
 }
