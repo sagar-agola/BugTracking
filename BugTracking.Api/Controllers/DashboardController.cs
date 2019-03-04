@@ -26,56 +26,24 @@ namespace BugTracking.Api.Controllers
             userService = new UserService();
         }
 
-        [Route("bug-count")]
+        [Route("system-overview")]
         [HttpGet]
-        public object GetOpenBugCount()
+        public object GetSystemOverView()
         {
             ResponseDetails responseDetails = new ResponseDetails();
 
             try
             {
-                int count = bugService.OpenBugCount();
-                responseDetails = Helper.SetResponseDetails("", true, count, MessageType.Success);
+                SystemOverview systemOverview = new SystemOverview
+                {
+                    BugCount = bugService.OpenBugCount(),
+                    ProjectCount = projectService.ActiveProjectCount(),
+                    EmployeeCount = userService.EmployeeCount()
+                };
+
+                responseDetails = Helper.SetResponseDetails("", true, systemOverview, MessageType.Success);
             }
-            catch (Exception ex)
-            {
-                responseDetails = Helper.SetResponseDetails("Exception encountered : " + ex.Message, false, ex, MessageType.Error);
-            }
-
-            return responseDetails;
-        }
-
-        [Route("project-count")]
-        [HttpGet]
-        public object GetActiveProjectCount()
-        {
-            ResponseDetails responseDetails = new ResponseDetails();
-
-            try
-            {
-                int count = projectService.ActiveProjectCount();
-                responseDetails = Helper.SetResponseDetails("", true, count, MessageType.Success);
-            }
-            catch (Exception ex)
-            {
-                responseDetails = Helper.SetResponseDetails("Exception encountered : " + ex.Message, false, ex, MessageType.Error);
-            }
-
-            return responseDetails;
-        }
-
-        [Route("employee-count")]
-        [HttpGet]
-        public object GetEmployeeCount()
-        {
-            ResponseDetails responseDetails = new ResponseDetails();
-
-            try
-            {
-                int count = userService.EmployeeCount();
-                responseDetails = Helper.SetResponseDetails("", true, count, MessageType.Success);
-            }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 responseDetails = Helper.SetResponseDetails("Exception encountered : " + ex.Message, false, ex, MessageType.Error);
             }

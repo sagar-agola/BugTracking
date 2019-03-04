@@ -43,6 +43,7 @@
     <Compile Include="Enums\MessageType.cs" />
     <Compile Include="Helpers\Helper.cs" />
     <Compile Include="Models\ResponseDetails.cs" />
+    <Compile Include="Models\SystemOverview.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\BugViewModel.cs" />
     <Compile Include="ViewModels\Bug_PrioritiesViewModel.cs" />
