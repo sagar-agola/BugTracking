@@ -11,5 +11,7 @@ namespace BugTracking.Business.Contracts.Repositories.Projects
         Project GetById(int id);
 
         int ActiveProjectCount();
+
+        new void Delete(Project project);
     }
 }

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace BugTracking.Business.Dal.Repositories.General
 {
@@ -21,7 +22,7 @@ namespace BugTracking.Business.Dal.Repositories.General
             return Context.Set<T>();
         }
 
-        public IQueryable<T> FindBy(System.Linq.Expressions.Expression<Func<T, bool>> predicate)
+        public IQueryable<T> FindBy(Expression<Func<T, bool>> predicate)
         {
             return Context.Set<T>().Where(predicate);
         }

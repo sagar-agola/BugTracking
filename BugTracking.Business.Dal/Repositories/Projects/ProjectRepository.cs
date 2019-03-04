@@ -41,5 +41,11 @@ namespace BugTracking.Business.Dal.Repositories.Projects
                 .Include(project => project.Bugs)
                 .ToList();
         }
+
+        void IProjectRepository.Delete(Project project)
+        {
+            project.IsActive = false;
+            Update(project);
+        }
     }
 }

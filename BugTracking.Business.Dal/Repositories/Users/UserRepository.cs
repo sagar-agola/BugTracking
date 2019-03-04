@@ -36,5 +36,11 @@ namespace BugTracking.Business.Dal.Repositories.Users
                 .Include(user => user.Project_Developers)
                 .Include(user => user.Bugs).ToList();
         }
+
+        void IUserRepository.Delete(User user)
+        {
+            user.IsActive = false;
+            Update(user);
+        }
     }
 }

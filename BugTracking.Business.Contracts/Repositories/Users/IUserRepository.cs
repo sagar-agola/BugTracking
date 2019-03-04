@@ -11,5 +11,7 @@ namespace BugTracking.Business.Contracts.Repositories.Users
         new List<User> GetAll();
 
         int EmployeeCount();
+
+        new void Delete(User user);
     }
 }
