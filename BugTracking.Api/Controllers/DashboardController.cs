@@ -43,7 +43,7 @@ namespace BugTracking.Api.Controllers
 
                 responseDetails = Helper.SetResponseDetails("", true, systemOverview, MessageType.Success);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 responseDetails = Helper.SetResponseDetails("Exception encountered : " + ex.Message, false, ex, MessageType.Error);
             }
