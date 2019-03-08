@@ -31,7 +31,7 @@ namespace BugTracking.Api.Controllers
                 bugService.Create(model);
                 responseDetails = Helper.SetResponseDetails("Bug created successfully.", true, null, MessageType.Success);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 responseDetails = Helper.SetResponseDetails("Exception encountered : " + ex.Message, false, ex, MessageType.Error);
             }
@@ -50,7 +50,7 @@ namespace BugTracking.Api.Controllers
                 BugViewModel bugList = bugService.Get(id);
                 responseDetails = Helper.SetResponseDetails("", true, bugList, MessageType.Success);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 responseDetails = Helper.SetResponseDetails("Exception encountered : " + ex.Message, false, ex, MessageType.Error);
             }
@@ -69,7 +69,7 @@ namespace BugTracking.Api.Controllers
                 List<BugViewModel> bugList = bugService.GetAll();
                 responseDetails = Helper.SetResponseDetails("", true, bugList, MessageType.Success);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 responseDetails = Helper.SetResponseDetails("Exception encountered : " + ex.Message, false, ex, MessageType.Error);
             }
@@ -88,7 +88,7 @@ namespace BugTracking.Api.Controllers
                 bugService.Update(model);
                 responseDetails = Helper.SetResponseDetails("Bug updated successfully.", true, null, MessageType.Success);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 responseDetails = Helper.SetResponseDetails("Exception encountered : " + ex.Message, false, ex, MessageType.Error);
             }
@@ -108,7 +108,7 @@ namespace BugTracking.Api.Controllers
                 responseDetails = Helper.SetResponseDetails("Bug deleted successfully.", true, null, MessageType.Success);
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 responseDetails = Helper.SetResponseDetails("Exception encountered : " + ex.Message, false, ex, MessageType.Error);
             }
