@@ -31,7 +31,7 @@ namespace BugTracking.Api.Controllers
                 roleService.Create(model);
                 responseDetails = Helper.SetResponseDetails("Status inserted successfully.", true, null, MessageType.Success);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 responseDetails = Helper.SetResponseDetails("Exception encountered : " + ex.Message, false, ex, MessageType.Error);
             }
@@ -50,9 +50,9 @@ namespace BugTracking.Api.Controllers
                 List<User_RolesViewModel> roles = roleService.GetAll();
                 responseDetails = Helper.SetResponseDetails("", true, roles, MessageType.Success);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                responseDetails =  Helper.SetResponseDetails("Exception Encountered : " + ex.Message, false, ex, MessageType.Error);
+                responseDetails = Helper.SetResponseDetails("Exception Encountered : " + ex.Message, false, ex, MessageType.Error);
             }
 
             return responseDetails;
@@ -69,7 +69,7 @@ namespace BugTracking.Api.Controllers
                 roleService.EditRole(model);
                 responseDetails = Helper.SetResponseDetails("Updated successfully.", true, null, MessageType.Success);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 responseDetails = Helper.SetResponseDetails("Exception encountered : " + ex.Message, false, ex, MessageType.Error);
             }
@@ -88,7 +88,7 @@ namespace BugTracking.Api.Controllers
                 roleService.DeleteRole(id);
                 responseDetails = Helper.SetResponseDetails("Role removed successfully.", true, null, MessageType.Success);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 responseDetails = Helper.SetResponseDetails("Exception encountered : " + ex.Message, false, ex, MessageType.Error);
             }

@@ -31,7 +31,7 @@ namespace BugTracking.Api.Controllers
                 projectStatusService.Create(model);
                 responseDetails = Helper.SetResponseDetails("Status created successfully.", true, null, MessageType.Success);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 responseDetails = Helper.SetResponseDetails("Exception encuntered : " + ex.Message, false, ex, MessageType.Error);
             }

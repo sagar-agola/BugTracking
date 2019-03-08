@@ -6,9 +6,6 @@ using BugTracking.Business.Service.Projects;
 using BugTracking.Business.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace BugTracking.Api.Controllers
@@ -34,7 +31,7 @@ namespace BugTracking.Api.Controllers
                 projectService.Create(model);
                 responseDetails = Helper.SetResponseDetails("Project created successfully.", true, null, MessageType.Success);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 responseDetails = Helper.SetResponseDetails("Exception encountered : " + ex.Message, false, ex, MessageType.Error);
             }

@@ -31,7 +31,7 @@ namespace BugTracking.Api.Controllers
                 bugStatusService.Create(model);
                 responseDetails = Helper.SetResponseDetails("Status inserted successfully.", true, null, MessageType.Success);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 responseDetails = Helper.SetResponseDetails("Exception encountered : " + ex.Message, false, ex, MessageType.Error);
             }
@@ -49,7 +49,7 @@ namespace BugTracking.Api.Controllers
                 List<Bug_StatusViewModel> bugStatusList = bugStatusService.GetAll();
                 responseDetails = Helper.SetResponseDetails("", true, bugStatusList, MessageType.Success);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 responseDetails = Helper.SetResponseDetails("Exception encountered : " + ex.Message, false, ex, MessageType.Error);
             }
@@ -68,7 +68,7 @@ namespace BugTracking.Api.Controllers
                 bugStatusService.Update(model);
                 responseDetails = Helper.SetResponseDetails("Bug status updated successfully.", true, null, MessageType.Success);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 responseDetails = Helper.SetResponseDetails("Exception encountered : " + ex.Message, false, ex, MessageType.Error);
             }
@@ -87,7 +87,7 @@ namespace BugTracking.Api.Controllers
                 bugStatusService.Delete(id);
                 responseDetails = Helper.SetResponseDetails("Bug Status removed successfully.", true, null, MessageType.Success);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 responseDetails = Helper.SetResponseDetails("Exception encountered : " + ex.Message, false, ex, MessageType.Error);
             }

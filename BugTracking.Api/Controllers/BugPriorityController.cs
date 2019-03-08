@@ -31,7 +31,7 @@ namespace BugTracking.Api.Controllers
                 bugPriorityService.Create(model);
                 responseDetails = Helper.SetResponseDetails("Bug priority inserted successfully.", true, null, MessageType.Success);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 responseDetails = Helper.SetResponseDetails("Exception encountered : " + ex.Message, false, ex, MessageType.Error);
             }
@@ -50,7 +50,7 @@ namespace BugTracking.Api.Controllers
                 List<Bug_PrioritiesViewModel> bugPrioritiesList = bugPriorityService.GetAll();
                 responseDetails = Helper.SetResponseDetails("", true, bugPrioritiesList, MessageType.Success);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 responseDetails = Helper.SetResponseDetails("Exception encountered : " + ex.Message, false, ex, MessageType.Error);
             }

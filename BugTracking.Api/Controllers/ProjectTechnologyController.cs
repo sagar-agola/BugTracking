@@ -31,7 +31,7 @@ namespace BugTracking.Api.Controllers
                 projectTechnologyService.Create(mode);
                 responseDetails = Helper.SetResponseDetails("Technology created successfully.", true, null, MessageType.Success);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 responseDetails = Helper.SetResponseDetails("Exception encountered : " + ex.Message, false, ex, MessageType.Error);
             }
@@ -50,7 +50,7 @@ namespace BugTracking.Api.Controllers
                 Project_TechnologiesViewModel model = projectTechnologyService.Get(id);
                 responseDetails = Helper.SetResponseDetails("", true, model, MessageType.Success);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 responseDetails = Helper.SetResponseDetails("Exception encountered : " + ex.Message, false, ex, MessageType.Error);
             }
@@ -69,7 +69,7 @@ namespace BugTracking.Api.Controllers
                 List<Project_TechnologiesViewModel> model = projectTechnologyService.GetAll();
                 responseDetails = Helper.SetResponseDetails("", true, model, MessageType.Success);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 responseDetails = Helper.SetResponseDetails("Exception encountered : " + ex.Message, false, ex, MessageType.Error);
             }
@@ -88,7 +88,7 @@ namespace BugTracking.Api.Controllers
                 projectTechnologyService.Delete(id);
                 responseDetails = Helper.SetResponseDetails("Technology removed successfully.", true, null, MessageType.Success);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 responseDetails = Helper.SetResponseDetails("Exception encountered : " + ex.Message, false, ex, MessageType.Error);
             }

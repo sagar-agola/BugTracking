@@ -31,7 +31,7 @@ namespace BugTracking.Api.Controllers
                 userService.Create(model);
                 responseDetails = Helper.SetResponseDetails("User created successfully.", true, null, MessageType.Success);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 responseDetails = Helper.SetResponseDetails("Exception encountered : " + ex.Message, false, ex, MessageType.Error);
             }
@@ -50,7 +50,7 @@ namespace BugTracking.Api.Controllers
                 UserViewModel user = userService.GetById(id);
                 responseDetails = Helper.SetResponseDetails("", true, user, MessageType.Success);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 responseDetails = Helper.SetResponseDetails("Exception encountered : " + ex.Message, false, ex, MessageType.Error);
             }
@@ -69,7 +69,7 @@ namespace BugTracking.Api.Controllers
                 List<UserViewModel> users = userService.GetAll();
                 responseDetails = Helper.SetResponseDetails("", true, users, MessageType.Success);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 responseDetails = Helper.SetResponseDetails("Exception encountered : " + ex.Message, false, ex, MessageType.Error);
             }
@@ -88,7 +88,7 @@ namespace BugTracking.Api.Controllers
                 userService.Edit(model);
                 responseDetails = Helper.SetResponseDetails("User details updated successfully.", true, null, MessageType.Success);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 responseDetails = Helper.SetResponseDetails("Exception encountered : " + ex.Message, false, ex, MessageType.Error);
             }
@@ -107,7 +107,7 @@ namespace BugTracking.Api.Controllers
                 userService.Delete(id);
                 responseDetails = Helper.SetResponseDetails("User removed successfully.", true, null, MessageType.Success);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 responseDetails = Helper.SetResponseDetails("Exception encountered : " + ex.Message, false, ex, MessageType.Error);
             }
