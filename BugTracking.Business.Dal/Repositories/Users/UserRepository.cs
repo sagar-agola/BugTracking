@@ -31,7 +31,7 @@ namespace BugTracking.Business.Dal.Repositories.Users
 
         List<User> IUserRepository.GetAll()
         {
-            return Context.Users
+            return Context.Users.Where(user => user.IsActive)
                 .Include(user => user.User_Roles)
                 .Include(user => user.Project_Developers)
                 .Include(user => user.Bugs).ToList();

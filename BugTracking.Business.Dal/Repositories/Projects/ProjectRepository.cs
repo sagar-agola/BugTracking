@@ -34,7 +34,7 @@ namespace BugTracking.Business.Dal.Repositories.Projects
 
         List<Project> IProjectRepository.GetAll()
         {
-            return Context.Projects
+            return Context.Projects.Where(project => project.IsActive)
                 .Include(project => project.Project_Developers)
                 .Include(project => project.Project_Status)
                 .Include(project => project.Project_Technologies)
