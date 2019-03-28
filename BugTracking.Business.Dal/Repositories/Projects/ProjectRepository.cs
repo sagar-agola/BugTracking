@@ -25,7 +25,7 @@ namespace BugTracking.Business.Dal.Repositories.Projects
         {
             return Context.Projects
                 .Where(project => project.Id == id)
-                .Include(project => project.Project_Developers)
+                .Include(project => project.Project_Developers.Select(dev => dev.User))
                 .Include(project => project.Project_Status)
                 .Include(project => project.Project_Technologies)
                 .Include(project => project.Bugs)
