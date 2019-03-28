@@ -58,5 +58,14 @@ namespace BugTracking.Business.Service.Role
                 unitOfWork.RoleRepository.Save();
             }
         }
+
+        public User_RolesViewModel Get(int id)
+        {
+            using (UnitOfWork unitOfWork = new UnitOfWork())
+            {
+                User_Roles role = unitOfWork.RoleRepository.Get(id);
+                return Mapper.Map<User_Roles, User_RolesViewModel>(role);
+            }
+        }
     }
 }

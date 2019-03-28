@@ -4,6 +4,7 @@ using BugTracking.Business.Helpers;
 using BugTracking.Business.Models;
 using BugTracking.Business.Service.Role;
 using BugTracking.Business.ViewModels;
+using Swashbuckle.Swagger;
 using System;
 using System.Collections.Generic;
 using System.Web.Http;
@@ -53,6 +54,25 @@ namespace BugTracking.Api.Controllers
             catch (Exception ex)
             {
                 responseDetails = Helper.SetResponseDetails("Exception Encountered : " + ex.Message, false, ex, MessageType.Error);
+            }
+
+            return responseDetails;
+        }
+
+        [Route("get/{id}")]
+        [HttpGet]
+        public object GetRoleById(int id)
+        {
+            ResponseDetails responseDetails = new ResponseDetails();
+
+            try
+            {
+                User_RolesViewModel model = roleService.Get(id);
+                responseDetails = Helper.SetResponseDetails("", true, model, MessageType.Success);
+            }
+            catch(Exception ex)
+            {
+                responseDetails = Helper.SetResponseDetails("Exception encountered : " + ex.Message, false, ex, MessageType.Error);
             }
 
             return responseDetails;

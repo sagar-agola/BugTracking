@@ -9,6 +9,8 @@ namespace BugTracking.Business.Contracts.Services.Role
 
         List<User_RolesViewModel> GetAll();
 
+        User_RolesViewModel Get(int id);
+
         void EditRole(User_RolesViewModel model);
 
         void DeleteRole(int id);
