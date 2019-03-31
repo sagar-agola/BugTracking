@@ -60,7 +60,7 @@ namespace BugTracking.Business.Service.Bugs
         {
             using (unitOfWork = new UnitOfWork())
             {
-                return unitOfWork.ProjectRepository.ActiveProjectCount();
+                return unitOfWork.BugRepository.OpenBugCount();
             }
         }
 
