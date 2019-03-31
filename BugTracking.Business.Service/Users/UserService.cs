@@ -4,6 +4,7 @@ using BugTracking.Business.ViewModels;
 using BugTracking.Business.Dal;
 using AutoMapper;
 using BugTracking.Database.Domain;
+using System.Linq;
 
 namespace BugTracking.Business.Service.Users
 {
@@ -80,9 +81,27 @@ namespace BugTracking.Business.Service.Users
             UserViewModel userMapping = Mapper.Map<User, UserViewModel>(user);
             userMapping.User_RolesViewModel = Mapper.Map<User_Roles, User_RolesViewModel>(user.User_Roles);
             userMapping.BugViewModels = Mapper.Map<ICollection<Bug>, ICollection<BugViewModel>>(user.Bugs);
-            userMapping.Project_DevelopersViewModel = Mapper.Map<ICollection<Project_Developers>, ICollection<Project_DevelopersViewModel>>(user.Project_Developers);
+
+            List<Project_Developers> listModel = user.Project_Developers.ToList();
+            List<Project_DevelopersViewModel> listModelMapping = new List<Project_DevelopersViewModel>();
+            for(int i = 0; i < listModel.Count; i++)
+            {
+                listModelMapping.Add(MapProjectDeveloper(listModel[i]));
+            }
+            userMapping.Project_DevelopersViewModel = listModelMapping;
 
             return userMapping;
         }
+
+        private Project_DevelopersViewModel MapProjectDeveloper(Project_Developers model)
+        {
+            Project_DevelopersViewModel modelMapping = Mapper.Map<Project_Developers, Project_DevelopersViewModel>(model);
+
+            modelMapping.UserViewModel = Mapper.Map<User, UserViewModel>(model.User);
+            modelMapping.ProjectViewModel = Mapper.Map<Project, ProjectViewModel>(model.Project);
+
+            return modelMapping;
+        }
+
     }
 }
