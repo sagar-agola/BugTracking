@@ -22,5 +22,13 @@ namespace BugTracking.Business.Dal.Repositories.ProjectDevelopers
                 .Include(project => project.User)
                 .ToList();
         }
+
+        public void RemoveDeveloper(int projId, int devId)
+        {
+            Project_Developers model = Context.Project_Developers
+                                            .Where(proj => proj.ProjectId == projId && proj.UserId == devId)
+                                            .FirstOrDefault();
+            Context.Project_Developers.Remove(model);
+        }
     }
 }

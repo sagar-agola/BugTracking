@@ -8,5 +8,7 @@ namespace BugTracking.Business.Contracts.Services.ProjectDevelopers
         List<Project_DevelopersViewModel> GetbyProjectId(int id);
 
         void Create(Project_DevelopersViewModel model);
+
+        void RemoveDeveloper(int projId, int devId);
     }
 }

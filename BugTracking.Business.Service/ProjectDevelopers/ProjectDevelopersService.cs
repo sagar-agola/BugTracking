@@ -37,6 +37,15 @@ namespace BugTracking.Business.Service.ProjectDevelopers
             }
         }
 
+        public void RemoveDeveloper(int projId, int devId)
+        {
+            using (unitOfWork = new UnitOfWork())
+            {
+                unitOfWork.projectDevelopersRepository.RemoveDeveloper(projId, devId);
+                unitOfWork.projectDevelopersRepository.Save();
+            }
+        }
+
         private Project_DevelopersViewModel MapProjectDeveloper(Project_Developers model)
         {
             Project_DevelopersViewModel modelMapping = Mapper.Map<Project_Developers, Project_DevelopersViewModel>(model);

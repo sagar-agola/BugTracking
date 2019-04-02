@@ -37,7 +37,7 @@ namespace BugTracking.Api.Controllers
             }
             catch(Exception ex)
             {
-                responseDetails = Helper.SetResponseDetails("Exception encountered : ", false, ex, MessageType.Error);
+                responseDetails = Helper.SetResponseDetails("Exception encountered : " + ex.Message, false, ex, MessageType.Error);
             }
 
             return responseDetails;
@@ -56,7 +56,26 @@ namespace BugTracking.Api.Controllers
             }
             catch(Exception ex)
             {
-                responseDetails = Helper.SetResponseDetails("Exception Encountered : ", false, ex, MessageType.Error);
+                responseDetails = Helper.SetResponseDetails("Exception Encountered : " + ex.Message, false, ex, MessageType.Error);
+            }
+
+            return responseDetails;
+        }
+
+        [HttpDelete]
+        [Route("remove/{projId}/{devId}")]
+        public object RemoveDeveloper(int projId, int devId)
+        {
+            ResponseDetails responseDetails = new ResponseDetails();
+
+            try
+            {
+                projectDevelopersService.RemoveDeveloper(projId, devId);
+                responseDetails = Helper.SetResponseDetails("Developer removed successfully", true, null, MessageType.Success);
+            }
+            catch(Exception ex)
+            {
+                responseDetails = Helper.SetResponseDetails("Exception Encountered : " + ex.Message, false, ex, MessageType.Error);
             }
 
             return responseDetails;
