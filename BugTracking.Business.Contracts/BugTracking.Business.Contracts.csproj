@@ -44,6 +44,7 @@
     <Compile Include="Repositories\BugPriority\IBugPriorityRepository.cs" />
     <Compile Include="Repositories\Bugs\IBugRepository.cs" />
     <Compile Include="Repositories\General\IBaseRepository.cs" />
+    <Compile Include="Repositories\ProjectDevelopers\IProjectDevelopersRepository.cs" />
     <Compile Include="Repositories\ProjectStatus\IProjectStatusReporitory.cs" />
     <Compile Include="Repositories\Projects\IProjectRepository.cs" />
     <Compile Include="Repositories\ProjectTechnology\IProjectTechnologyRepository.cs" />
@@ -52,6 +53,7 @@
     <Compile Include="Repositories\Users\IUserRepository.cs" />
     <Compile Include="Services\BugPriority\IBugPriorityService.cs" />
     <Compile Include="Services\Bugs\IBugService.cs" />
+    <Compile Include="Services\ProjectDevelopers\IProjectDevelopersService.cs" />
     <Compile Include="Services\ProjectStatus\IProjectStatusService.cs" />
     <Compile Include="Services\Projects\IProjectService.cs" />
     <Compile Include="Services\ProjectTechnology\IProjectTechnologyService.cs" />

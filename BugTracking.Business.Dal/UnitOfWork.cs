@@ -16,6 +16,8 @@ using BugTracking.Business.Contracts.Repositories.ProjectStatus;
 using BugTracking.Business.Dal.Repositories.ProjectStatus;
 using BugTracking.Business.Contracts.Repositories.Projects;
 using BugTracking.Business.Dal.Repositories.Projects;
+using BugTracking.Business.Contracts.Repositories.ProjectDevelopers;
+using BugTracking.Business.Dal.Repositories.ProjectDevelopers;
 
 namespace BugTracking.Business.Dal
 {
@@ -36,6 +38,7 @@ namespace BugTracking.Business.Dal
             ProjectTechnologyRepository = new ProjectTechnologyRepository(context);
             ProjectStatusReporitory = new ProjectStatusRepository(context);
             ProjectRepository = new ProjectRepository(context);
+            projectDevelopersRepository = new ProjectDevelopersRepository(context);
         }
         #endregion
 
@@ -48,6 +51,7 @@ namespace BugTracking.Business.Dal
         public IProjectTechnologyRepository ProjectTechnologyRepository { get; }
         public IProjectStatusReporitory ProjectStatusReporitory { get; }
         public IProjectRepository ProjectRepository { get; }
+        public IProjectDevelopersRepository projectDevelopersRepository { get; }
         #endregion
 
         private bool disposed;
