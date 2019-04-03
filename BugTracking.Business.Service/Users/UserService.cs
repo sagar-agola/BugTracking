@@ -76,6 +76,16 @@ namespace BugTracking.Business.Service.Users
             }
         }
 
+        public List<UserViewModel> GetFreeUsers()
+        {
+            using (unitOfWork = new UnitOfWork())
+            {
+                List<User> model = unitOfWork.UserRepository.GetFreeEmployees();
+
+                return Mapper.Map<List<User>, List<UserViewModel>>(model);
+            }
+        }
+
         private UserViewModel MapUser(User user)
         {
             UserViewModel userMapping = Mapper.Map<User, UserViewModel>(user);
@@ -102,6 +112,5 @@ namespace BugTracking.Business.Service.Users
 
             return modelMapping;
         }
-
     }
 }

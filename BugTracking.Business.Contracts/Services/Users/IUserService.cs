@@ -16,5 +16,7 @@ namespace BugTracking.Business.Contracts.Services.Users
         void Delete(int id);
 
         int EmployeeCount();
+
+        List<UserViewModel> GetFreeUsers();
     }
 }

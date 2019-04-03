@@ -42,5 +42,12 @@ namespace BugTracking.Business.Dal.Repositories.Users
             user.IsActive = false;
             Update(user);
         }
+
+        public List<User> GetFreeEmployees()
+        {
+            return Context.Users
+                .Where(user => user.Project_Developers.Count == 0 && user.IsActive)
+                .ToList();
+        }
     }
 }

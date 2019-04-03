@@ -58,6 +58,25 @@ namespace BugTracking.Api.Controllers
             return responseDetails;
         }
 
+        [HttpGet]
+        [Route("get-free")]
+        public object GetFreeEmployees()
+        {
+            ResponseDetails responseDetails = new ResponseDetails();
+
+            try
+            {
+                List<UserViewModel> model = userService.GetFreeUsers();
+                responseDetails = Helper.SetResponseDetails("", true, model, MessageType.Success);
+            }
+            catch(Exception ex)
+            {
+                responseDetails = Helper.SetResponseDetails("Exception encountered : " + ex.Message, false, ex, MessageType.Error);
+            }
+
+            return responseDetails;
+        }
+
         [Route("get-all")]
         [HttpGet]
         public object GetAllUser()

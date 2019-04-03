@@ -13,5 +13,7 @@ namespace BugTracking.Business.Contracts.Repositories.Users
         int EmployeeCount();
 
         new void Delete(User user);
+
+        List<User> GetFreeEmployees();
     }
 }

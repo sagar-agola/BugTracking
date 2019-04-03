@@ -1,5 +1,4 @@
-﻿using BugTracking.Business.Contracts.Repositories.ProjectDevelopers;
-using BugTracking.Business.Contracts.Services.ProjectDevelopers;
+﻿using BugTracking.Business.Contracts.Services.ProjectDevelopers;
 using BugTracking.Business.Enums;
 using BugTracking.Business.Helpers;
 using BugTracking.Business.Models;
@@ -7,14 +6,11 @@ using BugTracking.Business.Service.ProjectDevelopers;
 using BugTracking.Business.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace BugTracking.Api.Controllers
 {
-    [RoutePrefix("api/project-developers")]
+    [RoutePrefix("api/project/developers")]
     public class ProjectDevelopersController : ApiController
     {
         private readonly IProjectDevelopersService projectDevelopersService;
