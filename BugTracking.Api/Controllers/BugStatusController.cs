@@ -6,6 +6,7 @@ using BugTracking.Business.Service.BugStatus;
 using BugTracking.Business.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Net.Cache;
 using System.Web.Http;
 
 namespace BugTracking.Api.Controllers
@@ -50,6 +51,25 @@ namespace BugTracking.Api.Controllers
                 responseDetails = Helper.SetResponseDetails("", true, bugStatusList, MessageType.Success);
             }
             catch (Exception ex)
+            {
+                responseDetails = Helper.SetResponseDetails("Exception encountered : " + ex.Message, false, ex, MessageType.Error);
+            }
+
+            return responseDetails;
+        }
+
+        [Route("get/{id}")]
+        [HttpGet]
+        public object Get(int id)
+        {
+            ResponseDetails responseDetails = new ResponseDetails();
+
+            try
+            {
+                Bug_StatusViewModel model = bugStatusService.Get(id);
+                responseDetails = Helper.SetResponseDetails("", true, model, MessageType.Success);
+            }
+            catch(Exception ex)
             {
                 responseDetails = Helper.SetResponseDetails("Exception encountered : " + ex.Message, false, ex, MessageType.Error);
             }

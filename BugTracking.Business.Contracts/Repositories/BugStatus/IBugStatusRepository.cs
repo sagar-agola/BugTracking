@@ -7,5 +7,7 @@ namespace BugTracking.Business.Contracts.Repositories.BugStatus
     public interface IBugStatusRepository : IBaseRepository<Bug_Status>
     {
         new List<Bug_Status> GetAll();
+
+        Bug_Status GetById(int id);
     }
 }

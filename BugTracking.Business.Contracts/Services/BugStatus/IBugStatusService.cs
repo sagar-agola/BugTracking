@@ -12,5 +12,7 @@ namespace BugTracking.Business.Contracts.Services.BugStatus
         void Delete(int id);
 
         List<Bug_StatusViewModel> GetAll();
+
+        Bug_StatusViewModel Get(int id);
     }
 }

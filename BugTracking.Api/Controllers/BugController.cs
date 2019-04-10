@@ -96,7 +96,7 @@ namespace BugTracking.Api.Controllers
             return responseDetails;
         }
 
-        [Route("delete")]
+        [Route("delete/{id}")]
         [HttpDelete]
         public object DeleteBug(int id)
         {

@@ -4,6 +4,7 @@ using BugTracking.Business.ViewModels;
 using BugTracking.Business.Dal;
 using BugTracking.Database.Domain;
 using AutoMapper;
+using System;
 
 namespace BugTracking.Business.Service.Bugs
 {
@@ -80,8 +81,18 @@ namespace BugTracking.Business.Service.Bugs
 
             modelMapping.Bug_PrioritiesViewModel = Mapper.Map<Bug_priorities, Bug_PrioritiesViewModel>(model.Bug_priorities);
             modelMapping.Bug_StatusViewModel = Mapper.Map<Bug_Status, Bug_StatusViewModel>(model.Bug_Status);
-            modelMapping.ProjectViewModel = Mapper.Map<Project, ProjectViewModel>(model.Project);
+            modelMapping.ProjectViewModel = MapProject(model.Project);
             modelMapping.UserViewModel = Mapper.Map<User, UserViewModel>(model.User);
+
+            return modelMapping;
+        }
+
+        private ProjectViewModel MapProject(Project model)
+        {
+            ProjectViewModel modelMapping = Mapper.Map<Project, ProjectViewModel>(model);
+
+            modelMapping.Project_TechnologiesViewModel = Mapper.Map<Project_Technologies, Project_TechnologiesViewModel>(model.Project_Technologies);
+            modelMapping.Project_StatusViewModel = Mapper.Map<Project_Status, Project_StatusViewModel>(model.Project_Status);
 
             return modelMapping;
         }
