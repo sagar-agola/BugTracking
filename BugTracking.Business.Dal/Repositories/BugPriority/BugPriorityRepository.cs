@@ -14,9 +14,19 @@ namespace BugTracking.Business.Dal.Repositories.BugPriority
             Context = context;
         }
 
+        public Bug_priorities GetById(int id)
+        {
+            return Context.Bug_priorities
+                .Where(x => x.Id == id)
+                .Include(x => x.Bugs)
+                .FirstOrDefault();
+        }
+
         List<Bug_priorities> IBugPriorityRepository.GetAll()
         {
-            return Context.Bug_priorities.Include(x => x.Bugs).ToList();
+            return Context.Bug_priorities
+                .Include(x => x.Bugs)
+                .ToList();
         }
     }
 }

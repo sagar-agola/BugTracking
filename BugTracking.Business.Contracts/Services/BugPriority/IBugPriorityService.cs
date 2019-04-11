@@ -9,5 +9,6 @@ namespace BugTracking.Business.Contracts.Services.BugPriority
         void Update(Bug_PrioritiesViewModel model);
         void Delete(int id);
         List<Bug_PrioritiesViewModel> GetAll();
+        Bug_PrioritiesViewModel Get(int id);
     }
 }

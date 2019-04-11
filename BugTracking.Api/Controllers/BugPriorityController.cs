@@ -58,6 +58,25 @@ namespace BugTracking.Api.Controllers
             return responseDetails;
         }
 
+        [Route("get/{id}")]
+        [HttpGet]
+        public object Get(int id)
+        {
+            ResponseDetails responseDetails = new ResponseDetails();
+
+            try
+            {
+                Bug_PrioritiesViewModel model = bugPriorityService.Get(id);
+                responseDetails = Helper.SetResponseDetails("", true, model, MessageType.Success);
+            }
+            catch(Exception ex)
+            {
+                responseDetails = Helper.SetResponseDetails("Excception encountered : " + ex.Message, false, ex, MessageType.Error);
+            }
+
+            return responseDetails;
+        }
+
         [Route("update")]
         [HttpPut]
         public object UpdateBugPriority(Bug_PrioritiesViewModel model)
