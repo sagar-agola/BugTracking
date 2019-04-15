@@ -105,7 +105,7 @@ namespace BugTracking.Api.Controllers
             try
             {
                 bugPriorityService.Delete(id);
-                responseDetails = Helper.SetResponseDetails("Bug Priority removed successfully.", false, null, MessageType.Success);
+                responseDetails = Helper.SetResponseDetails("Bug Priority removed successfully.", true, null, MessageType.Success);
             }
             catch (Exception ex)
             {

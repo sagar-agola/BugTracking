@@ -4,6 +4,8 @@ using BugTracking.Business.ViewModels;
 using BugTracking.Business.Dal;
 using BugTracking.Database.Domain;
 using AutoMapper;
+using System.Linq;
+using System;
 
 namespace BugTracking.Business.Service.BugPriority
 {
@@ -71,7 +73,18 @@ namespace BugTracking.Business.Service.BugPriority
         {
             Bug_PrioritiesViewModel modelMapping = Mapper.Map<Bug_priorities, Bug_PrioritiesViewModel>(model);
 
-            modelMapping.BugViewModels = Mapper.Map<ICollection<Bug>, ICollection<BugViewModel>>(model.Bugs);
+            foreach(Bug b in model.Bugs)
+            {
+                modelMapping.BugViewModels.Add(MapBug(b));
+            }
+
+            return modelMapping;
+        }
+
+        private BugViewModel MapBug(Bug model)
+        {
+            BugViewModel modelMapping = Mapper.Map<Bug, BugViewModel>(model);
+            modelMapping.UserViewModel = Mapper.Map<User, UserViewModel>(model.User);
 
             return modelMapping;
         }
