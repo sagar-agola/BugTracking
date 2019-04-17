@@ -133,5 +133,24 @@ namespace BugTracking.Api.Controllers
 
             return responseDetails;
         }
+
+        [Route("authenticate")]
+        [HttpPost]
+        public object Authenticate(Login model)
+        {
+            ResponseDetails responseDetails = new ResponseDetails();
+
+            try
+            {
+                int userId = userService.Authenticate(model.Email, model.Password);
+                responseDetails = Helper.SetResponseDetails("", true, userId, MessageType.Success);
+            }
+            catch(Exception ex)
+            {
+                responseDetails = Helper.SetResponseDetails("Exception encountered : " + ex.Message, false, ex, MessageType.Error);
+            }
+
+            return responseDetails;
+        }
     }
 }

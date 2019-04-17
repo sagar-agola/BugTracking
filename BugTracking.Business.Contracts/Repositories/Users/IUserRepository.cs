@@ -15,5 +15,7 @@ namespace BugTracking.Business.Contracts.Repositories.Users
         new void Delete(User user);
 
         List<User> GetFreeEmployees();
+
+        int Authenticate(string email, string password);
     }
 }

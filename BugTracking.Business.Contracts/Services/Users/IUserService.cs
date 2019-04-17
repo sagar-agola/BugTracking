@@ -18,5 +18,7 @@ namespace BugTracking.Business.Contracts.Services.Users
         int EmployeeCount();
 
         List<UserViewModel> GetFreeUsers();
+
+        int Authenticate(string email, string password);
     }
 }

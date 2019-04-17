@@ -4,6 +4,7 @@ using BugTracking.Database.Domain;
 using System.Data.Entity;
 using System.Linq;
 using System.Collections.Generic;
+using System;
 
 namespace BugTracking.Business.Dal.Repositories.Users
 {
@@ -48,6 +49,21 @@ namespace BugTracking.Business.Dal.Repositories.Users
             return Context.Users
                 .Where(user => user.Project_Developers.Count == 0 && user.IsActive)
                 .ToList();
+        }
+
+        public int Authenticate(string email, string password)
+        {
+            try
+            {
+                return Context.Users
+                    .Where(u => u.Email == email && u.Password == password)
+                    .FirstOrDefault()
+                    .Id;
+            }
+            catch(Exception)
+            {
+                return 0;
+            }
         }
     }
 }
