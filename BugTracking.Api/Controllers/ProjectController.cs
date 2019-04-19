@@ -39,6 +39,29 @@ namespace BugTracking.Api.Controllers
             return responseDetails;
         }
 
+        [Route("change-status")]
+        [HttpPost]
+        public object ChangeStatus(ChangeProjectStatus model)
+        {
+            ResponseDetails responseDetails = new ResponseDetails();
+
+            try
+            {
+                ProjectViewModel project = projectService.Get(model.Id);
+                project.ProjectStatusId = model.StatusId;
+
+                projectService.Update(project);
+
+                responseDetails = Helper.SetResponseDetails("Project status updated successfully.", true, null, MessageType.Success);
+            }
+            catch(Exception ex)
+            {
+                responseDetails = Helper.SetResponseDetails("Exception encountered : " + ex.Message, false, ex, MessageType.Error);
+            }
+
+            return responseDetails;
+        }
+
         [Route("get/{id}")]
         [HttpGet]
         public object GetProject(int id)

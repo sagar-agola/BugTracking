@@ -43,6 +43,7 @@
     <Compile Include="Enums\MessageType.cs" />
     <Compile Include="Helpers\Helper.cs" />
     <Compile Include="Models\ChangePassword.cs" />
+    <Compile Include="Models\ChangeProjectStatus.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\ResponseDetails.cs" />
     <Compile Include="Models\SystemOverview.cs" />
