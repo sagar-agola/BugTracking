@@ -60,9 +60,29 @@ namespace BugTracking.Business.Dal.Repositories.Users
                     .FirstOrDefault()
                     .Id;
             }
-            catch(Exception)
+            catch (Exception)
             {
                 return 0;
+            }
+        }
+
+        public bool ChangePassword(int id, string oldPassword, string newPassword)
+        {
+            User user = Context.Users
+                .Where(u => u.Id == id && u.Password == oldPassword)
+                .FirstOrDefault();
+
+            if (user != null)
+            {
+                user.Password = newPassword;
+                Context.Entry(user).State = EntityState.Modified;
+                Context.SaveChanges();
+
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }

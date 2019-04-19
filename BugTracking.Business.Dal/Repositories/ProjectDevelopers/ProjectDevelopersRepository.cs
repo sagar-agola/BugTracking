@@ -23,11 +23,20 @@ namespace BugTracking.Business.Dal.Repositories.ProjectDevelopers
                 .ToList();
         }
 
+        public Project_Developers GetByUserId(int id)
+        {
+            return Context.Project_Developers
+                .Where(project => project.UserId == id)
+                .Include(project => project.User)
+                .Include(project => project.Project)
+                .FirstOrDefault();
+        }
+
         public void RemoveDeveloper(int projId, int devId)
         {
             Project_Developers model = Context.Project_Developers
-                                            .Where(proj => proj.ProjectId == projId && proj.UserId == devId)
-                                            .FirstOrDefault();
+                .Where(proj => proj.ProjectId == projId && proj.UserId == devId)
+                .FirstOrDefault();
             Context.Project_Developers.Remove(model);
         }
     }

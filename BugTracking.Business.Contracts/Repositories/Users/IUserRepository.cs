@@ -17,5 +17,7 @@ namespace BugTracking.Business.Contracts.Repositories.Users
         List<User> GetFreeEmployees();
 
         int Authenticate(string email, string password);
+
+        bool ChangePassword(int id, string oldPassword, string newPassword);
     }
 }

@@ -6,6 +6,7 @@ using BugTracking.Business.Service.Users;
 using BugTracking.Business.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Net.Cache;
 using System.Web.Http;
 
 namespace BugTracking.Api.Controllers
@@ -143,7 +144,34 @@ namespace BugTracking.Api.Controllers
             try
             {
                 int userId = userService.Authenticate(model.Email, model.Password);
-                responseDetails = Helper.SetResponseDetails("", true, userId, MessageType.Success);
+
+                if(userId != 0)
+                    responseDetails = Helper.SetResponseDetails("", true, userId, MessageType.Success);
+                else
+                    responseDetails = Helper.SetResponseDetails("", false, userId, MessageType.Success);
+            }
+            catch(Exception ex)
+            {
+                responseDetails = Helper.SetResponseDetails("Exception encountered : " + ex.Message, false, ex, MessageType.Error);
+            }
+
+            return responseDetails;
+        }
+
+        [Route("change-password")]
+        [HttpPost]
+        public object ChangePassword(ChangePassword model)
+        {
+            ResponseDetails responseDetails = new ResponseDetails();
+
+            try
+            {
+                bool result = userService.ChangePassword(model.Id, model.OldPassword, model.NewPassword);
+
+                if (result)
+                    responseDetails = Helper.SetResponseDetails("Password updated successfully.", true, null, MessageType.Success);
+                else
+                    responseDetails = Helper.SetResponseDetails("Wrong Password Entered.", false, null, MessageType.Info);
             }
             catch(Exception ex)
             {

@@ -39,6 +39,25 @@ namespace BugTracking.Api.Controllers
             return responseDetails;
         }
 
+        [HttpGet]
+        [Route("get-by-user/{id}")]
+        public object GetByUserId(int id)
+        {
+            ResponseDetails responseDetails = new ResponseDetails();
+
+            try
+            {
+                Project_DevelopersViewModel model = projectDevelopersService.GetbyUserId(id);
+                responseDetails = Helper.SetResponseDetails("", true, model, MessageType.Success);
+            }
+            catch(Exception ex)
+            {
+                responseDetails = Helper.SetResponseDetails("Exception encountered : " + ex.Message, false, ex, MessageType.Error);
+            }
+
+            return responseDetails;
+        }
+
         [HttpPost]
         [Route("add")]
         public object AddDeveloper(Project_DevelopersViewModel model)

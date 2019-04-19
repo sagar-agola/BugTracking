@@ -8,6 +8,8 @@ namespace BugTracking.Business.Contracts.Repositories.ProjectDevelopers
     {
         List<Project_Developers> GetByProjectId(int id);
 
+        Project_Developers GetByUserId(int id);
+
         void RemoveDeveloper(int projId, int devId);
     }
 }

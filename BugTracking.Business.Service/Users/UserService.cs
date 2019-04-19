@@ -94,6 +94,14 @@ namespace BugTracking.Business.Service.Users
             }
         }
 
+        public bool ChangePassword(int id, string oldPassword, string newPassword)
+        {
+            using (unitOfWork = new UnitOfWork())
+            {
+                return unitOfWork.UserRepository.ChangePassword(id, oldPassword, newPassword);
+            }
+        }
+
         private UserViewModel MapUser(User user)
         {
             UserViewModel userMapping = Mapper.Map<User, UserViewModel>(user);
