@@ -11,6 +11,8 @@ namespace BugTracking.Business.Contracts.Services.Bugs
 
         List<BugViewModel> GetAll();
 
+        List<BugViewModel> GetByUserId(int id);
+
         void Update(BugViewModel model);
 
         void Delete(int id);

@@ -57,6 +57,22 @@ namespace BugTracking.Business.Service.Bugs
             }
         }
 
+        public List<BugViewModel> GetByUserId(int id)
+        {
+            using (unitOfWork = new UnitOfWork())
+            {
+                List<Bug> bugList = unitOfWork.BugRepository.GetByUserId(id);
+                List<BugViewModel> bugMappingList = new List<BugViewModel>();
+
+                for (int i = 0; i < bugList.Count; i++)
+                {
+                    bugMappingList.Add(MapBugModel(bugList[i]));
+                }
+
+                return bugMappingList;
+            }
+        }
+
         public int OpenBugCount()
         {
             using (unitOfWork = new UnitOfWork())

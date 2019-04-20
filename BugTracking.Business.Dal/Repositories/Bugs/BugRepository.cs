@@ -25,6 +25,17 @@ namespace BugTracking.Business.Dal.Repositories.Bugs
                 .FirstOrDefault();
         }
 
+        public List<Bug> GetByUserId(int id)
+        {
+            return Context.Bugs
+                .Where(bug => bug.UserId == id)
+                .Include(bug => bug.User)
+                .Include(bug => bug.Project)
+                .Include(bug => bug.Bug_priorities)
+                .Include(bug => bug.Bug_Status)
+                .ToList();
+        }
+
         public int OpenBugCount()
         {
             return Context.Bugs
