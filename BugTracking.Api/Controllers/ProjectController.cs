@@ -41,7 +41,7 @@ namespace BugTracking.Api.Controllers
 
         [Route("change-status")]
         [HttpPost]
-        public object ChangeStatus(ChangeProjectStatus model)
+        public object ChangeStatus(ChangeStatus model)
         {
             ResponseDetails responseDetails = new ResponseDetails();
 

@@ -28,11 +28,10 @@ namespace BugTracking.Business.Dal.Repositories.Bugs
         public List<Bug> GetByUserId(int id)
         {
             return Context.Bugs
-                .Where(bug => bug.UserId == id)
-                .Include(bug => bug.User)
+                .Include(bug => bug.Bug_Status)
+                .Where(bug => bug.UserId == id && (bug.Bug_Status.BugStatus == "new" || bug.Bug_Status.BugStatus == "Open"))
                 .Include(bug => bug.Project)
                 .Include(bug => bug.Bug_priorities)
-                .Include(bug => bug.Bug_Status)
                 .ToList();
         }
 

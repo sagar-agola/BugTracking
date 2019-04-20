@@ -1,6 +1,6 @@
 ﻿namespace BugTracking.Business.Models
 {
-    public class ChangeProjectStatus
+    public class ChangeStatus
     {
         public int Id { get; set; }
 
