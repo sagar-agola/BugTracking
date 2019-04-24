@@ -19,7 +19,7 @@ namespace BugTracking.Business.Contracts.Services.Users
 
         List<UserViewModel> GetFreeUsers();
 
-        int Authenticate(string email, string password);
+        UserViewModel Authenticate(string email, string password);
 
         bool ChangePassword(int id, string oldPassword, string newPassword);
     }

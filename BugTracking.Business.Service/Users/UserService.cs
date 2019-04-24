@@ -86,11 +86,16 @@ namespace BugTracking.Business.Service.Users
             }
         }
 
-        public int Authenticate(string email, string password)
+        public UserViewModel Authenticate(string email, string password)
         {
             using (unitOfWork = new UnitOfWork())
             {
-                return unitOfWork.UserRepository.Authenticate(email, password);
+                User model = unitOfWork.UserRepository.Authenticate(email, password);
+
+                UserViewModel modelMapping = Mapper.Map<User, UserViewModel>(model);
+                modelMapping.User_RolesViewModel = Mapper.Map<User_Roles, User_RolesViewModel>(model.User_Roles);
+
+                return modelMapping;
             }
         }
 

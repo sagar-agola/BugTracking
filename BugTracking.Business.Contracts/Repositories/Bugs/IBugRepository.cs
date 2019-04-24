@@ -12,6 +12,8 @@ namespace BugTracking.Business.Contracts.Repositories.Bugs
 
         List<Bug> GetByUserId(int id);
 
+        List<Bug> GetForTester();
+
         int OpenBugCount();
     }
 }

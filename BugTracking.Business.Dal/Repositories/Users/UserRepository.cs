@@ -51,19 +51,11 @@ namespace BugTracking.Business.Dal.Repositories.Users
                 .ToList();
         }
 
-        public int Authenticate(string email, string password)
+        public User Authenticate(string email, string password)
         {
-            try
-            {
-                return Context.Users
-                    .Where(u => u.Email == email && u.Password == password)
-                    .FirstOrDefault()
-                    .Id;
-            }
-            catch (Exception)
-            {
-                return 0;
-            }
+            return Context.Users
+                .Where(u => u.IsActive && u.Email == email && u.Password == password)
+                .FirstOrDefault();
         }
 
         public bool ChangePassword(int id, string oldPassword, string newPassword)

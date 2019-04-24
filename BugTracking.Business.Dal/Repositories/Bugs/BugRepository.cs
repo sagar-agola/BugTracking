@@ -35,10 +35,20 @@ namespace BugTracking.Business.Dal.Repositories.Bugs
                 .ToList();
         }
 
+        public List<Bug> GetForTester()
+        {
+            return Context.Bugs
+                .Include(bug => bug.Bug_Status)
+                .Where(bug => bug.Bug_Status.BugStatus != "Solved")
+                .Include(bug => bug.Bug_priorities)
+                .Include(bug => bug.Project)
+                .ToList();
+        }
+
         public int OpenBugCount()
         {
             return Context.Bugs
-                .Where(bug => bug.Bug_Status.BugStatus != "Closed")
+                .Where(bug => bug.Bug_Status.BugStatus != "Solved")
                 .Count();
         }
 

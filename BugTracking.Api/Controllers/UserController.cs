@@ -143,12 +143,12 @@ namespace BugTracking.Api.Controllers
 
             try
             {
-                int userId = userService.Authenticate(model.Email, model.Password);
+                UserViewModel user = userService.Authenticate(model.Email, model.Password);
 
-                if(userId != 0)
-                    responseDetails = Helper.SetResponseDetails("", true, userId, MessageType.Success);
+                if(user != null)
+                    responseDetails = Helper.SetResponseDetails("", true, user, MessageType.Success);
                 else
-                    responseDetails = Helper.SetResponseDetails("", false, userId, MessageType.Success);
+                    responseDetails = Helper.SetResponseDetails("Email or password is wrong.", false, null, MessageType.Success);
             }
             catch(Exception ex)
             {

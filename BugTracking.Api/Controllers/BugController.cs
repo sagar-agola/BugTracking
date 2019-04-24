@@ -100,6 +100,25 @@ namespace BugTracking.Api.Controllers
             return responseDetails;
         }
 
+        [Route("get-data-for-create-bug")]
+        [HttpGet]
+        public object GetDataForCreateBug()
+        {
+            ResponseDetails responseDetails = new ResponseDetails();
+
+            try
+            {
+                CreateBug model = bugService.GetDataForCreateBug();
+                responseDetails = Helper.SetResponseDetails("", true, model, MessageType.Success);
+            }
+            catch (Exception ex)
+            {
+                responseDetails = Helper.SetResponseDetails("Exception encountered : " + ex.Message, false, ex, MessageType.Error);
+            }
+
+            return responseDetails;
+        }
+
         [Route("get-by-user/{id}")]
         [HttpGet]
         public object GetByUser(int id)
@@ -109,6 +128,25 @@ namespace BugTracking.Api.Controllers
             try
             {
                 List<BugViewModel> bugList = bugService.GetByUserId(id);
+                responseDetails = Helper.SetResponseDetails("", true, bugList, MessageType.Success);
+            }
+            catch (Exception ex)
+            {
+                responseDetails = Helper.SetResponseDetails("Exception encountered : " + ex.Message, false, ex, MessageType.Error);
+            }
+
+            return responseDetails;
+        }
+
+        [Route("get-for-tester")]
+        [HttpGet]
+        public object GetByUser()
+        {
+            ResponseDetails responseDetails = new ResponseDetails();
+
+            try
+            {
+                List<BugViewModel> bugList = bugService.GetForTester();
                 responseDetails = Helper.SetResponseDetails("", true, bugList, MessageType.Success);
             }
             catch (Exception ex)

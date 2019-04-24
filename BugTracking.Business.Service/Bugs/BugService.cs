@@ -5,6 +5,8 @@ using BugTracking.Business.Dal;
 using BugTracking.Database.Domain;
 using AutoMapper;
 using System;
+using BugTracking.Business.Models;
+using System.Linq;
 
 namespace BugTracking.Business.Service.Bugs
 {
@@ -62,6 +64,41 @@ namespace BugTracking.Business.Service.Bugs
             using (unitOfWork = new UnitOfWork())
             {
                 List<Bug> bugList = unitOfWork.BugRepository.GetByUserId(id);
+                List<BugViewModel> bugMappingList = new List<BugViewModel>();
+
+                for (int i = 0; i < bugList.Count; i++)
+                {
+                    bugMappingList.Add(MapBugModel(bugList[i]));
+                }
+
+                return bugMappingList;
+            }
+        }
+
+        public CreateBug GetDataForCreateBug()
+        {
+            using (unitOfWork = new UnitOfWork())
+            {
+                List<Project> projects = unitOfWork.ProjectRepository.FindBy(p => p.IsActive).ToList();
+                List<User> users = unitOfWork.UserRepository.FindBy(u => u.IsActive).ToList();
+                List<Bug_priorities> priorities = unitOfWork.BugPriorityRepository.GetAll();
+                List<Bug_Status> statusList = unitOfWork.BugStatusRepository.GetAll();
+
+                return new CreateBug
+                {
+                    Projects = Mapper.Map<List<Project>, List<ProjectViewModel>>(projects),
+                    Users = Mapper.Map<List<User>, List<UserViewModel>>(users),
+                    Priorities = Mapper.Map<List<Bug_priorities>, List<Bug_PrioritiesViewModel>>(priorities),
+                    StatusList = Mapper.Map<List<Bug_Status>, List<Bug_StatusViewModel>>(statusList),
+                };
+            }
+        }
+
+        public List<BugViewModel> GetForTester()
+        {
+            using (unitOfWork = new UnitOfWork())
+            {
+                List<Bug> bugList = unitOfWork.BugRepository.GetForTester();
                 List<BugViewModel> bugMappingList = new List<BugViewModel>();
 
                 for (int i = 0; i < bugList.Count; i++)
