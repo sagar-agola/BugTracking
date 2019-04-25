@@ -29,8 +29,7 @@ namespace BugTracking.Api.Controllers
 
             try
             {
-                HttpRequest req = HttpContext.Current.Request;
-                BugViewModel model = Helper.SaveBugImage(req);
+                BugViewModel model = Helper.SaveBugImage(HttpContext.Current.Request);
 
                 bugService.Create(model);
                 responseDetails = Helper.SetResponseDetails("Bug created successfully.", true, null, MessageType.Success);

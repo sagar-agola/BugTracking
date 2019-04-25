@@ -47,7 +47,7 @@ namespace BugTracking.Business.Dal.Repositories.Users
         public List<User> GetFreeEmployees()
         {
             return Context.Users
-                .Where(user => user.Project_Developers.Count == 0 && user.IsActive)
+                .Where(user => user.Project_Developers.Count == 0 && user.IsActive && user.User_Roles.RoleName == "Employee")
                 .ToList();
         }
 
