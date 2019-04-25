@@ -6,6 +6,7 @@ using BugTracking.Business.Service.Bugs;
 using BugTracking.Business.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Web;
 using System.Web.Http;
 
 namespace BugTracking.Api.Controllers
@@ -22,12 +23,15 @@ namespace BugTracking.Api.Controllers
 
         [Route("create")]
         [HttpPost]
-        public object CreateBug(BugViewModel model)
+        public object CreateBug()
         {
             ResponseDetails responseDetails = new ResponseDetails();
 
             try
             {
+                HttpRequest req = HttpContext.Current.Request;
+                BugViewModel model = Helper.SaveBugImage(req);
+
                 bugService.Create(model);
                 responseDetails = Helper.SetResponseDetails("Bug created successfully.", true, null, MessageType.Success);
             }

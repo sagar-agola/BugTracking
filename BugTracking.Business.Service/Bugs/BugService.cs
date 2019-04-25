@@ -84,10 +84,17 @@ namespace BugTracking.Business.Service.Bugs
                 List<Bug_priorities> priorities = unitOfWork.BugPriorityRepository.GetAll();
                 List<Bug_Status> statusList = unitOfWork.BugStatusRepository.GetAll();
 
+                List<UserViewModel> userList = Mapper.Map<List<User>, List<UserViewModel>>(users);
+                for(int i = 0; i < users.Count; i++)
+                {
+                    userList[i].Project_DevelopersViewModel = Mapper.Map<ICollection<Project_Developers>, 
+                        ICollection<Project_DevelopersViewModel>>(users[i].Project_Developers);
+                }
+
                 return new CreateBug
                 {
                     Projects = Mapper.Map<List<Project>, List<ProjectViewModel>>(projects),
-                    Users = Mapper.Map<List<User>, List<UserViewModel>>(users),
+                    Users = userList,
                     Priorities = Mapper.Map<List<Bug_priorities>, List<Bug_PrioritiesViewModel>>(priorities),
                     StatusList = Mapper.Map<List<Bug_Status>, List<Bug_StatusViewModel>>(statusList),
                 };
