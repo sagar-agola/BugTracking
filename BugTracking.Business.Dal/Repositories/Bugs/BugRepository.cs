@@ -55,10 +55,11 @@ namespace BugTracking.Business.Dal.Repositories.Bugs
         List<Bug> IBugRepository.GetAll()
         {
             return Context.Bugs
+                .Include(bug => bug.Bug_Status)
+                .Where(bug => bug.Bug_Status.BugStatus != "Solved")
                 .Include(bug => bug.User)
                 .Include(bug => bug.Project)
                 .Include(bug => bug.Bug_priorities)
-                .Include(bug => bug.Bug_Status)
                 .ToList();
         }
     }
