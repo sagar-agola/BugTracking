@@ -12,6 +12,8 @@ namespace BugTracking.Business.Contracts.Repositories.Projects
 
         int ActiveProjectCount();
 
+        int ProductCount();
+
         new void Delete(Project project);
     }
 }

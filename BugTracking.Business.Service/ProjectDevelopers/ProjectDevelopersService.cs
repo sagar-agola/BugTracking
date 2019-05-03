@@ -45,7 +45,7 @@ namespace BugTracking.Business.Service.ProjectDevelopers
             {
                 Project_Developers model = unitOfWork.projectDevelopersRepository.GetByUserId(id);
 
-                return MapProjectDeveloper(model);
+                return model == null ? new Project_DevelopersViewModel() : MapProjectDeveloper(model);
             }
         }
 

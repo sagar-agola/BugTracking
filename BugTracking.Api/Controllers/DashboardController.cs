@@ -38,7 +38,8 @@ namespace BugTracking.Api.Controllers
                 {
                     BugCount = bugService.OpenBugCount(),
                     ProjectCount = projectService.ActiveProjectCount(),
-                    EmployeeCount = userService.EmployeeCount()
+                    EmployeeCount = userService.EmployeeCount(),
+                    ProductsCount = projectService.ProductCount()
                 };
 
                 responseDetails = Helper.SetResponseDetails("", true, systemOverview, MessageType.Success);

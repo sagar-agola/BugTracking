@@ -4,6 +4,7 @@ using BugTracking.Database.Domain;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using Z.EntityFramework.Plus;
 
 namespace BugTracking.Business.Dal.Repositories.Projects
 {
@@ -21,6 +22,11 @@ namespace BugTracking.Business.Dal.Repositories.Projects
                 .Count();
         }
 
+        public int ProductCount()
+        {
+            return Context.Projects.Count();
+        }
+
         public Project GetById(int id)
         {
             return Context.Projects
@@ -28,7 +34,8 @@ namespace BugTracking.Business.Dal.Repositories.Projects
                 .Include(project => project.Project_Developers.Select(dev => dev.User))
                 .Include(project => project.Project_Status)
                 .Include(project => project.Project_Technologies)
-                .Include(project => project.Bugs)
+                .IncludeFilter(Project => Project.Bugs
+                    .Where(bug => bug.Bug_Status.BugStatus != "Solved"))
                 .FirstOrDefault();
         }
 
@@ -38,7 +45,8 @@ namespace BugTracking.Business.Dal.Repositories.Projects
                 .Include(project => project.Project_Developers)
                 .Include(project => project.Project_Status)
                 .Include(project => project.Project_Technologies)
-                .Include(project => project.Bugs)
+                .IncludeFilter(Project => Project.Bugs
+                    .Where(bug => bug.Bug_Status.BugStatus != "Solved"))
                 .ToList();
         }
 

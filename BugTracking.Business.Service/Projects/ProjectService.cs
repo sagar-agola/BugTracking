@@ -20,6 +20,14 @@ namespace BugTracking.Business.Service.Projects
             }
         }
 
+        public int ProductCount()
+        {
+            using (unitOfWork = new UnitOfWork())
+            {
+                return unitOfWork.ProjectRepository.ProductCount();
+            }
+        }
+
         public void Create(ProjectViewModel model)
         {
             using (unitOfWork = new UnitOfWork())

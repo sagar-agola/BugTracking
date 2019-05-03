@@ -26,7 +26,9 @@ namespace BugTracking.Business.Dal.Repositories.ProjectDevelopers
         public Project_Developers GetByUserId(int id)
         {
             return Context.Project_Developers
-                .Where(project => project.UserId == id)
+                .Where(project => project.UserId == id
+                    && project.Project.Project_Status.ProjectStatus != "Finished"
+                    && project.Project.Project_Status.ProjectStatus != "Completed")
                 .Include(project => project.User)
                 .Include(project => project.Project)
                 .FirstOrDefault();

@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Collections.Generic;
 using System;
+using Z.EntityFramework.Plus;
 
 namespace BugTracking.Business.Dal.Repositories.Users
 {
@@ -27,6 +28,8 @@ namespace BugTracking.Business.Dal.Repositories.Users
             return Context.Users
                 .Where(user => user.Id == id)
                 .Include(user => user.User_Roles)
+                .IncludeFilter(user => user.Bugs
+                    .Where(bug => bug.Bug_Status.BugStatus != "Solved"))
                 .FirstOrDefault();
         }
 
@@ -35,7 +38,9 @@ namespace BugTracking.Business.Dal.Repositories.Users
             return Context.Users.Where(user => user.IsActive)
                 .Include(user => user.User_Roles)
                 .Include(user => user.Project_Developers)
-                .Include(user => user.Bugs).ToList();
+                .IncludeFilter(user => user.Bugs
+                    .Where(bug => bug.Bug_Status.BugStatus != "Solved"))
+                .ToList();
         }
 
         void IUserRepository.Delete(User user)
