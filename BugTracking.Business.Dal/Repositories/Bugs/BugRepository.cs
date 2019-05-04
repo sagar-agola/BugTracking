@@ -14,6 +14,18 @@ namespace BugTracking.Business.Dal.Repositories.Bugs
             Context = context;
         }
 
+        public void DeleteByProjectId(int id)
+        {
+            List<Bug> bugs = Context.Bugs
+                .Where(bug => bug.ProjectId == id)
+                .ToList();
+
+            for(int i = 0; i < bugs.Count; i++)
+            {
+                Delete(bugs[i]);
+            }
+        }
+
         public Bug GetById(int id)
         {
             return Context.Bugs

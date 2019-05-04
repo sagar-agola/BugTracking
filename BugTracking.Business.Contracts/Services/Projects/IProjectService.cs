@@ -11,6 +11,8 @@ namespace BugTracking.Business.Contracts.Services.Projects
 
         List<ProjectViewModel> GetAll();
 
+        List<ProjectViewModel> GetFinished();
+
         void Update(ProjectViewModel model);
 
         void Delete(int id);

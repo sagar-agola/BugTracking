@@ -15,5 +15,7 @@ namespace BugTracking.Business.Contracts.Repositories.Bugs
         List<Bug> GetForTester();
 
         int OpenBugCount();
+
+        void DeleteByProjectId(int id);
     }
 }

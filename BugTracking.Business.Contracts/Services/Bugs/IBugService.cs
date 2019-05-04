@@ -22,6 +22,8 @@ namespace BugTracking.Business.Contracts.Services.Bugs
 
         void Delete(int id);
 
+        void DeleteByProjectId(int id);
+
         int OpenBugCount();
     }
 }

@@ -74,6 +74,22 @@ namespace BugTracking.Business.Service.Projects
             }
         }
 
+        public List<ProjectViewModel> GetFinished()
+        {
+            using (unitOfWork = new UnitOfWork())
+            {
+                List<Project> model = unitOfWork.ProjectRepository.GetFinished();
+                List<ProjectViewModel> modelMapping = new List<ProjectViewModel>();
+
+                for(int i = 0; i < model.Count; i++)
+                {
+                    modelMapping.Add(MapProjectModel(model[i]));
+                }
+
+                return modelMapping;
+            }
+        }
+
         public void Update(ProjectViewModel model)
         {
             using (unitOfWork = new UnitOfWork())

@@ -4,6 +4,7 @@ using BugTracking.Database.Domain;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using Z.EntityFramework.Plus;
 
 namespace BugTracking.Business.Dal.Repositories.ProjectTechnology
 {
@@ -25,7 +26,8 @@ namespace BugTracking.Business.Dal.Repositories.ProjectTechnology
         List<Project_Technologies> IProjectTechnologyRepository.GetAll()
         {
             return Context.Project_Technologies
-                .Include(tech => tech.Projects)
+                .IncludeFilter(tech => tech.Projects
+                    .Where(project => project.IsActive))
                 .ToList();
         }
     }

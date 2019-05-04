@@ -55,5 +55,18 @@ namespace BugTracking.Business.Dal.Repositories.Projects
             project.IsActive = false;
             Update(project);
         }
+
+        public List<Project> GetFinished()
+        {
+            return Context.Projects
+                .Where(project => project.IsActive
+                    && (project.Project_Status.ProjectStatus == "Finished" || project.Project_Status.ProjectStatus == "Under Testing"))
+                .Include(project => project.Project_Developers)
+                .Include(project => project.Project_Status)
+                .Include(project => project.Project_Technologies)
+                .IncludeFilter(project => project.Bugs
+                    .Where(bug => bug.Bug_Status.BugStatus != "Solved"))
+                .ToList();
+        }
     }
 }

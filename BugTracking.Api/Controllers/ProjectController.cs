@@ -1,8 +1,10 @@
-﻿using BugTracking.Business.Contracts.Services.ProjectDevelopers;
+﻿using BugTracking.Business.Contracts.Services.Bugs;
+using BugTracking.Business.Contracts.Services.ProjectDevelopers;
 using BugTracking.Business.Contracts.Services.Projects;
 using BugTracking.Business.Enums;
 using BugTracking.Business.Helpers;
 using BugTracking.Business.Models;
+using BugTracking.Business.Service.Bugs;
 using BugTracking.Business.Service.ProjectDevelopers;
 using BugTracking.Business.Service.Projects;
 using BugTracking.Business.ViewModels;
@@ -17,11 +19,13 @@ namespace BugTracking.Api.Controllers
     {
         private readonly IProjectService projectService;
         private readonly IProjectDevelopersService projectDevelopersService;
+        private readonly IBugService bugService;
 
         public ProjectController()
         {
             projectService = new ProjectService();
             projectDevelopersService = new ProjectDevelopersService();
+            bugService = new BugService();
         }
 
         [Route("create")]
@@ -104,6 +108,25 @@ namespace BugTracking.Api.Controllers
             return responseDetails;
         }
 
+        [Route("get-finished")]
+        [HttpGet]
+        public object getFinished()
+        {
+            ResponseDetails responseDetails = new ResponseDetails();
+
+            try
+            {
+                List<ProjectViewModel> model = projectService.GetFinished();
+                responseDetails = Helper.SetResponseDetails("", true, model, MessageType.Success);
+            }
+            catch(Exception ex)
+            {
+                responseDetails = Helper.SetResponseDetails("Exception Encountered : " + ex.Message, false, ex, MessageType.Error);
+            }
+
+            return responseDetails;
+        }
+
         [Route("update")]
         [HttpPut]
         public object UpdateProject(ProjectViewModel model)
@@ -133,6 +156,7 @@ namespace BugTracking.Api.Controllers
             {
                 projectService.Delete(id);
                 projectDevelopersService.RemoveByProjectId(id);
+                bugService.DeleteByProjectId(id);
 
                 responseDetails = Helper.SetResponseDetails("Project removed successfully.", true, null, MessageType.Success);
             }

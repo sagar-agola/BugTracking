@@ -10,6 +10,8 @@ namespace BugTracking.Business.Contracts.Repositories.Projects
 
         Project GetById(int id);
 
+        List<Project> GetFinished();
+
         int ActiveProjectCount();
 
         int ProductCount();

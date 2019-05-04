@@ -34,6 +34,15 @@ namespace BugTracking.Business.Service.Bugs
             }
         }
 
+        public void DeleteByProjectId(int id)
+        {
+            using (unitOfWork = new UnitOfWork())
+            {
+                unitOfWork.BugRepository.DeleteByProjectId(id);
+                unitOfWork.BugRepository.Save();
+            }
+        }
+
         public BugViewModel Get(int id)
         {
             using (unitOfWork = new UnitOfWork())

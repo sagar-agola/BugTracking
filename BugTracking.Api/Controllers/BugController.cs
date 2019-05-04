@@ -1,8 +1,10 @@
 ﻿using BugTracking.Business.Contracts.Services.Bugs;
+using BugTracking.Business.Contracts.Services.Projects;
 using BugTracking.Business.Enums;
 using BugTracking.Business.Helpers;
 using BugTracking.Business.Models;
 using BugTracking.Business.Service.Bugs;
+using BugTracking.Business.Service.Projects;
 using BugTracking.Business.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -15,10 +17,12 @@ namespace BugTracking.Api.Controllers
     public class BugController : ApiController
     {
         private readonly IBugService bugService;
+        private readonly IProjectService projectService;
 
         public BugController()
         {
             bugService = new BugService();
+            projectService = new ProjectService();
         }
 
         [Route("create")]
@@ -30,8 +34,13 @@ namespace BugTracking.Api.Controllers
             try
             {
                 BugViewModel model = Helper.SaveBugImage(HttpContext.Current.Request);
-
                 bugService.Create(model);
+
+                // when creating bug we need to change project status to under development
+                ProjectViewModel project = projectService.Get(model.ProjectId);
+                project.ProjectStatusId = 1004;
+                projectService.Update(project);
+
                 responseDetails = Helper.SetResponseDetails("Bug created successfully.", true, null, MessageType.Success);
             }
             catch (Exception ex)
@@ -52,6 +61,21 @@ namespace BugTracking.Api.Controllers
             {
                 BugViewModel bug = bugService.Get(model.Id);
                 bug.StatusId = model.StatusId;
+
+                if(model.StatusId == 2004)
+                {
+                    // if you are changing bug status to open => we need to change project status to under development
+                    ProjectViewModel project = projectService.Get(bug.ProjectId);
+                    project.ProjectStatusId = 1004;
+                    projectService.Update(project);
+                }
+                else if(model.StatusId == 2005)
+                {
+                    // if you are changing bug status to Fixed => we need to change project status to under finished
+                    ProjectViewModel project = projectService.Get(bug.ProjectId);
+                    project.ProjectStatusId = 1007;
+                    projectService.Update(project);
+                }
 
                 bugService.Update(bug);
 
@@ -189,7 +213,6 @@ namespace BugTracking.Api.Controllers
             {
                 bugService.Delete(id);
                 responseDetails = Helper.SetResponseDetails("Bug deleted successfully.", true, null, MessageType.Success);
-
             }
             catch (Exception ex)
             {
