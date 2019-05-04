@@ -12,5 +12,7 @@ namespace BugTracking.Business.Contracts.Services.ProjectDevelopers
         void Create(Project_DevelopersViewModel model);
 
         void RemoveDeveloper(int projId, int devId);
+
+        void RemoveByProjectId(int id);
     }
 }

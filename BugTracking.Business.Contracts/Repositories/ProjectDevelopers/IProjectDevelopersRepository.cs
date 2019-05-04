@@ -11,5 +11,7 @@ namespace BugTracking.Business.Contracts.Repositories.ProjectDevelopers
         Project_Developers GetByUserId(int id);
 
         void RemoveDeveloper(int projId, int devId);
+
+        void RemoveByProjectId(int id);
     }
 }

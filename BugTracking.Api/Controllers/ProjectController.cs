@@ -1,7 +1,9 @@
-﻿using BugTracking.Business.Contracts.Services.Projects;
+﻿using BugTracking.Business.Contracts.Services.ProjectDevelopers;
+using BugTracking.Business.Contracts.Services.Projects;
 using BugTracking.Business.Enums;
 using BugTracking.Business.Helpers;
 using BugTracking.Business.Models;
+using BugTracking.Business.Service.ProjectDevelopers;
 using BugTracking.Business.Service.Projects;
 using BugTracking.Business.ViewModels;
 using System;
@@ -14,10 +16,12 @@ namespace BugTracking.Api.Controllers
     public class ProjectController : ApiController
     {
         private readonly IProjectService projectService;
+        private readonly IProjectDevelopersService projectDevelopersService;
 
         public ProjectController()
         {
             projectService = new ProjectService();
+            projectDevelopersService = new ProjectDevelopersService();
         }
 
         [Route("create")]
@@ -128,6 +132,8 @@ namespace BugTracking.Api.Controllers
             try
             {
                 projectService.Delete(id);
+                projectDevelopersService.RemoveByProjectId(id);
+
                 responseDetails = Helper.SetResponseDetails("Project removed successfully.", true, null, MessageType.Success);
             }
             catch (Exception ex)

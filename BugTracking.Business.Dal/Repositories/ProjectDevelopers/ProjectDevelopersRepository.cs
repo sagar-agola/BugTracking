@@ -34,6 +34,18 @@ namespace BugTracking.Business.Dal.Repositories.ProjectDevelopers
                 .FirstOrDefault();
         }
 
+        public void RemoveByProjectId(int id)
+        {
+            List<Project_Developers> model = Context.Project_Developers
+                .Where(dev => dev.ProjectId == id)
+                .ToList();
+
+            for(int i = 0; i < model.Count; i++)
+            {
+                Context.Project_Developers.Remove(model[i]);
+            }
+        }
+
         public void RemoveDeveloper(int projId, int devId)
         {
             Project_Developers model = Context.Project_Developers
