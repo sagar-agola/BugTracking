@@ -35,8 +35,9 @@ namespace BugTracking.Business.Dal.Repositories.Users
 
         List<User> IUserRepository.GetAll()
         {
-            return Context.Users.Where(user => user.IsActive)
+            return Context.Users
                 .Include(user => user.User_Roles)
+                .Where(user => user.IsActive && user.User_Roles.RoleName != "Admin")
                 .Include(user => user.Project_Developers)
                 .IncludeFilter(user => user.Bugs
                     .Where(bug => bug.Bug_Status.BugStatus != "Solved"))
